@@ -1,0 +1,2 @@
+javac -d class .\Ejem* con todos los archivos fuera
+te los compila a las carpetas class correspondientes (sin tener que moverlas a mano)
