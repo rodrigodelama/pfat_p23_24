@@ -1,0 +1,34 @@
+G=<ET, EN, S, P>
+ET= {COMA, PC, PAREN, TESIS, BEGIN, END, ASIG, AND, OR, NOT, 
+    IF, THEN, PROG, DECL, WHILE, DO, PRINT_I, PRINT_B, BRAC, KET, 
+    IN, UNION, INTERSEC, CARD, LOWEST_ELEM, MAS, MENOS, MUL, 
+    DIV, MAYOR, MENOR, IGUAL, IDENT, CLOG, CINT, TYPE, EMPTYSET}
+
+EN= {S, <IdentList>, <StatementList>, <Body>, <Statement>,
+    <Exp>, <LDecl>, <Decl>}
+
+S= S
+
+P= {
+    S->  PROG IDENT DECL <LDecl> <Body> 
+    |  PROG IDENT <Body> 
+
+    <LDecl>-> <Decl> PC
+        | <Decl> PC <LDecl>
+
+    <Decl>-> TYPE <IdentList>
+
+    <IdentList>-> IDENT
+            | IDENT COMA <IdentList>
+
+    <Body>-> BEGIN <StatementList> END PC
+
+    <StatementList>-> <Statement> PC 
+                | <Statement> PC <StatementList>
+
+    <Statement>-> IDENT ASIG <Exp> 
+            | PRINT_I PAREN IDENT TESIS 
+            | PRINT_B PAREN IDENT TESIS 
+            | IF <Exp> THEN <StatementList> END 
+        | WHILE <Exp> DO <StatementList> END  
+}

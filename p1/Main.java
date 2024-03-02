@@ -1,6 +1,9 @@
-import Parser.*;
-import Lexer.*;
+import java.Lexer.*;
+import java.Parser.*;
 import java.io.*;
+
+import Lexer.Yylex;
+import Parser.parser;
 
 public class Main
 {

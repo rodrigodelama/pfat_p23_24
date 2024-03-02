@@ -176,6 +176,25 @@ package JLex;
   **************************************************************/
 import java.lang.System;
 import java.lang.Integer;
+import java.JLex.CAccept;
+import java.JLex.CAlloc;
+import java.JLex.CBunch;
+import java.JLex.CDTrans;
+import java.JLex.CDfa;
+import java.JLex.CEmit;
+import java.JLex.CError;
+import java.JLex.CInput;
+import java.JLex.CLexGen;
+import java.JLex.CMakeNfa;
+import java.JLex.CMinimize;
+import java.JLex.CNfa;
+import java.JLex.CNfa2Dfa;
+import java.JLex.CNfaPair;
+import java.JLex.CSet;
+import java.JLex.CSimplifyNfa;
+import java.JLex.CSpec;
+import java.JLex.CUtility;
+import java.JLex.SparseBitSet;
 import java.lang.Character;
 
 import java.util.Enumeration;

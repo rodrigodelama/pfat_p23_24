@@ -1,0 +1,83 @@
+package Lexer;
+
+import Errors.LexerException;
+import Parser.sym;
+
+%%
+%{
+private java_cup.runtime.Symbol tok(int k, Object value) {
+//  System.out.println("Token: " + k); //comentario para depurar
+  return new java_cup.runtime.Symbol(k, yyline, 0, value); 
+}
+%}
+
+%public
+%cup
+%line
+%yylexthrow{
+LexerException
+%yylexthrow} 
+%eofval{
+{return tok(sym.EOF, null); }
+%eofval}
+
+letra= [a-zA-Z]
+digito= [0-9]
+
+%%
+
+// Palabras clave
+begin   {return tok(sym.BEGIN, null); }
+and		{return tok(sym.AND, null); }
+or    {return tok(sym.OR, null); }
+not    {return tok(sym.NOT, null); }
+pf2024    {return tok(sym.PROG, null); }
+decl    {return tok(sym.DECL, null); }
+while    {return tok(sym.WHILE, null); }
+do    {return tok(sym.DO, null); }
+printInt    {return tok(sym.PRINT_I, null); }
+printBool    {return tok(sym.PRINT_B, null); }
+in    {return tok(sym.IN, null); }
+union    {return tok(sym.UNION, null); }
+intersec    {return tok(sym.INTERSEC, null); }
+card    {return tok(sym.CARD, null); }
+lowest_elem    {return tok(sym.LOWEST_ELEM, null); }
+emptyset    {return tok(sym.EMPTYSET, null); }
+if    {return tok(sym.IF, null); }
+then    {return tok(sym.THEN, null); }
+end    {return tok(sym.END, null); }
+
+// Las palabras clave para los tipos básicos
+// int, bool, insetm are all TYPE
+int    {return tok(sym.TYPE, null); }
+bool    {return tok(sym.TYPE, null); }
+real    {return tok(sym.TYPE, null); }
+// revisar si es correcto poner null
+
+// Signos de puntuación y operadores: 
+";"		{return tok(sym.PC, null); }
+":="		{return tok(sym.ASIG, null); }
+"<"		{return tok(sym.MENOR, null); }
+">"		{return tok(sym.MAYOR, null); }
+"+"		{return tok(sym.MAS, null); }
+"-"		{return tok(sym.MENOS, null); }
+"/"		{return tok(sym.DIV, null); }
+"*"		{return tok(sym.MUL, null); }
+"("		{return tok(sym.PAREN, null); }
+")"		{return tok(sym.TESIS, null); }
+","		{return tok(sym.COMA, null); }
+"{"		{return tok(sym.BRAC, null); }
+"}"		{return tok(sym.KET, null); }
+
+// Identificadores
+{letra}({letra}|{digito})*	{return tok(sym.IDENT, yytext()); } // letra seguida de letras o digitos
+
+// Constantes
+[0-9]+		{return tok(sym.CINT, Integer.parseInt(yytext())); } // secuencia de digitos
+true		{return tok(sym.CLOG, true); }
+false		{return tok(sym.CLOG, false); }
+
+// Se deben consumir sin generar tokens:
+// espacios en blanco, tabuladores, saltos de línea y retornos de carro
+[" "|\t|\n|\r]+	{ /* ignore white space. */ }
+.	{throw new LexerException("Illegal character in line " + yyline);}
