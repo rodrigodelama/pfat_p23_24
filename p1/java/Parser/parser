@@ -30,7 +30,7 @@ parser code {:
       |  PROG IDENT <Body> 
     <LDecl>-> <Decl> PC
           | <Decl> PC <LDecl>
-    <Decl>-> :t <IdentList>
+    <Decl>-> TYPE <IdentList>
     <IdentList>-> IDENT
               | IDENT COMA <IdentList>
     <Body>-> BEGIN <StatementList> END PC
@@ -40,8 +40,31 @@ parser code {:
               | PRINT_I PAREN IDENT TESIS 
               | PRINT_B PAREN IDENT TESIS 
               | IF <Exp> THEN <StatementList> END 
-              | WHILE <Exp> DO <StatementList> END  
-    <Exp>-> 
+              | WHILE <Exp> DO <StatementList> END
+    <ExpList>-> <Exp> 
+            | <Exp> COMA <ExpList>
+
+    TODO: review Exp - copilot did this list below
+    <Exp>-> IDENT 
+          | PAREN <Exp> TESIS 
+          | CINT 
+          | <Exp> MAS <Exp> 
+          | <Exp> MENOS <Exp> 
+          | <Exp> MUL <Exp> 
+          | <Exp> DIV <Exp> 
+          | MENOS <Exp> 
+          | CARD PAREN <Exp> TESIS 
+          | LOWEST_ELEM PAREN <Exp> TESIS 
+          | EMPTYSET 
+          | BRAC <ExpList> KET 
+          | <Exp> UNION <Exp> 
+          | <Exp> INTERSEC <Exp> 
+          | <Exp> IN <Exp> 
+          | CLOG 
+          | <Exp> AND <Exp> 
+          | <Exp> OR <Exp> 
+          | NOT <Exp> 
+          | <Exp> IGUAL <Exp>
   }
 */
 
@@ -152,7 +175,7 @@ Exp ::= IDENT:s {:RESULT=new Variable(s); :} //Un identificador que sea el nombr
       | Exp:e1 IGUAL Exp:e2 {:RESULT=new Igual(e1, e2); :} //La igualdad entre dos expresiones, utilizando el operador "=".
       | Exp:e1 MENOR Exp:e2 {:RESULT=new Menor(e1, e2); :} //La comparación entre 2 expresiones de tipo int utilizando el operador "<" (menor que).
       | Exp:e1 MAYOR Exp:e2 {:RESULT=new Mayor(e1, e2); :} //La comparación entre 2 expresiones de tipo int utilizando el operador ">".
-      | Exp:e1 IN Exp:e2 {:RESULT=new In(e1, e2); :} ; //Una expresión que pertenezca al lenguaje definido por la expresión lingüística <Exp> in <Exp>
+      | Exp:e1 IN Exp:e2 {:RESULT=new In(e1, e2); :} ; //FIXME: //Una expresión que pertenezca al lenguaje definido por la expresión lingüística <Exp> in <Exp>
                                                       //donde la primera subexpresión ha de ser de tipo int y la segunda de tipo intset. Devuelve true
                                                       //si el entero resultado de evaluar la primera subexpresión pertenece al conjunto resultado de
                                                       //evaluar la segunda y false en caso contrario.
