@@ -1,5 +1,5 @@
 package AST;
 
-public class ConjuntoVacio {
+public class ConjuntoVacio implements Exp {
     
 }

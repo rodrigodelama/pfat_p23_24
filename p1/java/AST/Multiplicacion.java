@@ -1,6 +1,6 @@
 package AST;
 
-public class Multiplicacion {
+public class Multiplicacion implements Exp {
     public final Exp exp1;
     public final Exp exp2;
     

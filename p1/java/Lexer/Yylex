@@ -46,9 +46,9 @@ if    {return tok(sym.IF, null); }
 then    {return tok(sym.THEN, null); }
 end    {return tok(sym.END, null); }
 
-int    {return tok(sym.TYPE, new Integer(Tipos.tint)); } //check these three
-bool    {return tok(sym.TYPE, new Integer(Tipos.tbool)); }
-intset    {return tok(sym.TYPE, new Integer(Tipos.tintset)); }
+int    {return tok(sym.TYPE, 1); }
+bool    {return tok(sym.TYPE, 2); }
+intset    {return tok(sym.TYPE, 3); }
 
 ";"		{return tok(sym.PC, null); }
 ":="		{return tok(sym.ASIG, null); }

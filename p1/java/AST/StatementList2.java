@@ -1,6 +1,6 @@
 package AST;
 
-public class StatementList2 {
+public class StatementList2 implements StatementList {
     public final Statement statement;
     public final StatementList statementlist;
 

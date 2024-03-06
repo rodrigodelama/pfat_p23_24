@@ -1,6 +1,6 @@
 package AST;
 
-public class LowestElem {
+public class LowestElem implements Exp {
     public final Exp exp;
 
     public LowestElem(Exp exp) {

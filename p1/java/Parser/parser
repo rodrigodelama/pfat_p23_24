@@ -72,17 +72,17 @@ parser code {:
 // Terminales
 terminal COMA, PC, PAREN, TESIS, BEGIN, END, ASIG, AND, OR, NOT, IF, THEN, PROG,
           DECL, WHILE, DO, PRINT_I, PRINT_B, BRAC, KET, IN, UNION, INTERSEC, CARD,
-          LOWEST_ELEM, MAS, MENOS, MUL, DIV, MAYOR, MENOR, IGUAL, TYPE, EMPTYSET,
-          OPUESTO, DIFF; // revisar si es correcto añadir OPUESTO
+          LOWEST_ELEM, MAS, MENOS, MUL, DIV, MAYOR, MENOR, IGUAL, EMPTYSET,
+          OPUESTO; // revisar si es correcto añadir OPUESTO
 
-terminal Integer CINT;
+terminal Integer CINT, TYPE;
 terminal String IDENT;
 terminal Boolean CLOG;
 
 // Conflictos de reducción
 //COMA, PC, TESIS, AND, OR, THEN, DO, KET, IN, UNION, INTERSEC, MAS, MENOS, MUL, DIV, MAYOR, MENOR, IGUAL
 
-// No terminales
+// No terminales - padres de subclases
 non terminal Prog Prog;
 non terminal IdentList IdentList;
 non terminal StatementList StatementList;
@@ -91,7 +91,6 @@ non terminal Statement Statement; //stsimp o lo que sea //una interfaz para cada
 non terminal Exp Exp; // hay que definir Exp
 non terminal LDecl LDecl;
 non terminal Decl Decl;
-
 non terminal ExpList ExpList; // hay que definir ExpList tambien
 
 /*
@@ -127,13 +126,13 @@ precedence left OPUESTO; // - (opuesto)
 
 start with Prog; // Simbolo Inicial
 //check
-Prog ::= PROG IDENT:i DECL:d LDecl:ld Body:b {:RESULT=new Prog1(i, d, ld, b); :} 
+Prog ::= PROG IDENT:i Decl:d LDecl:ld Body:b {:RESULT=new Prog1(i, d, ld, b); :} 
          | PROG IDENT:i Body:b {:RESULT=new Prog2(i, b); :} ;
 //check
 LDecl ::= Decl:d PC {:RESULT=new LDecl1(d); :}
         | Decl:d PC LDecl:ld {:RESULT=new LDecl2(d, ld); :} ;
 //check
-Decl ::= TYPE:t IdentList:il {:RESULT=new Decl(t, il); :} ;
+Decl ::= TYPE:t IdentList:il {:RESULT=new Decl(t.intValue(), il); :} ;
 //check
 IdentList ::= IDENT:i {:RESULT=new IdentList1(i); :}
             | IDENT:i COMA IdentList:il {:RESULT=new IdentList2(i, il); :} ;
@@ -155,10 +154,11 @@ Statement ::= IDENT:i ASIG Exp:e {:RESULT=new Statement1(i, e); :}
 ExpList ::= Exp:e {:RESULT=new ExpList1(e); :}
           | Exp:e COMA ExpList:el {:RESULT=new ExpList2(e, el); :} ;
 // definir Exp:
-      //Expresiones sin tipo definido
 //check
+      //Expresiones sin tipo definido
 Exp ::= IDENT:s {:RESULT=new Variable(s); :} //Un identificador que sea el nombre de una variable. Será del tipo de la variable.
       | PAREN Exp:e TESIS {:RESULT=new Parentesis(e); :} //Una expresión entre paréntesis. Será del tipo de la expresión contenida dentro de los paréntesis.
+      
       //Expresiones de tipo int
       | CINT:n {:RESULT=new ConstanteEntera(n.intValue()); :} //Una constante expresada en decimal.
       | Exp:e1 MAS Exp:e2 {:RESULT=new Suma(e1, e2); :} //Una suma de expresiones de tipo int utilizando el operador "+".
@@ -169,6 +169,7 @@ Exp ::= IDENT:s {:RESULT=new Variable(s); :} //Un identificador que sea el nombr
       | CARD PAREN Exp:e TESIS {:RESULT=new Card(e); :} //El número de elementos de un conjunto de enteros, utilizando la función card.
       | LOWEST_ELEM PAREN Exp:e TESIS {:RESULT=new LowestElem(e); :} //El menor elemento de un conjunto de enteros, utilizando la función lowest_elem.
           //Nota: el código generado en la práctica 3 debe lanzar una excepcióncuando lowest_elem sea aplicado al conjunto vacío.
+      
       //Expresiones de tipo intset (conjunto de enteros)
       | EMPTYSET {:RESULT=new ConjuntoVacio(); :} //Un conjunto vacío.
               /*
@@ -180,10 +181,11 @@ Exp ::= IDENT:s {:RESULT=new Variable(s); :} //Un identificador que sea el nombr
           //TODO: Repasar ExpList, tiene sentido?
       | Exp:e1 UNION Exp:e2 {:RESULT=new Union(e1, e2); :} //La unión de dos conjuntos de enteros, utilizando el operador union.
       | Exp:e1 INTERSEC Exp:e2 {:RESULT=new Interseccion(e1, e2); :} //La intersección de dos conjuntos de enteros, utilizando el operador intersec.
-          // La diferencia es tan facil como A - B CON TRUCO
+          // La diferencia es tan facil como A - B pero CON TRUCO //FIXME:
           // ES ESTO DIFF(A, B) = A - B
           //// NO ES ESTO DIFF(A, B) = A - (A INTERSEC B)
-      | Exp:e1 DIFF Exp:e2 {:RESULT=new Diferencia(e1, e2); :} //La diferencia de dos conjuntos de enteros, utilizando el operador "-".
+      // | Exp:e1 MENOS Exp:e2 {:RESULT=new Diferencia(e1, e2); :} //La diferencia de dos conjuntos de enteros, utilizando el operador "-".
+      
       //Expresiones de tipo bool
       | CLOG:c {:RESULT=new ConstanteBooleana(c.booleanValue()); :} //Una constante de tipo bool.
       | Exp:e1 AND Exp:e2 {:RESULT=new And(e1, e2); :} //La conjunción de dos expresiones lógicas, utilizando el operador and.
@@ -192,7 +194,7 @@ Exp ::= IDENT:s {:RESULT=new Variable(s); :} //Un identificador que sea el nombr
       | Exp:e1 IGUAL Exp:e2 {:RESULT=new Igual(e1, e2); :} //La igualdad entre dos expresiones, utilizando el operador "=".
       | Exp:e1 MENOR Exp:e2 {:RESULT=new Menor(e1, e2); :} //La comparación entre 2 expresiones de tipo int utilizando el operador "<" (menor que).
       | Exp:e1 MAYOR Exp:e2 {:RESULT=new Mayor(e1, e2); :} //La comparación entre 2 expresiones de tipo int utilizando el operador ">".
-      | Exp:e1 IN Exp:e2 {:RESULT=new In(e1, e2); :} ; //FIXME: //Una expresión que pertenezca al lenguaje definido por la expresión lingüística <Exp> in <Exp>
+      | Exp:e1 IN Exp:e2 {:RESULT=new In(e1, e2); :} ;//Una expresión que pertenezca al lenguaje definido por la expresión lingüística <Exp> in <Exp>
                                                       //donde la primera subexpresión ha de ser de tipo int y la segunda de tipo intset. Devuelve true
                                                       //si el entero resultado de evaluar la primera subexpresión pertenece al conjunto resultado de
                                                       //evaluar la segunda y false en caso contrario.

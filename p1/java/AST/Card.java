@@ -1,9 +1,9 @@
 package AST;
 
-public class Card {
-    public final int exp;
+public class Card implements Exp {
+    public final Exp exp;
 
-    public Card(int exp) {
+    public Card(Exp exp) {
         this.exp = exp;
     }
 }

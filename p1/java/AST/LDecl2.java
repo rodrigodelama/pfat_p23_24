@@ -1,6 +1,6 @@
 package AST;
 
-public class LDecl2 {
+public class LDecl2 implements LDecl {
     public final Decl decl;
     public final LDecl ldecl;
 

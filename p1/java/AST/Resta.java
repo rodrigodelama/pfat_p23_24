@@ -1,6 +1,6 @@
 package AST;
 
-public class Resta {
+public class Resta implements Exp {
     public final Exp exp1;
     public final Exp exp2;
     
