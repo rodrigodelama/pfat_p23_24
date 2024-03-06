@@ -49,9 +49,9 @@ end    {return tok(sym.END, null); }
 
 // Las palabras clave para los tipos básicos
 // int, bool, insetm are all TYPE
-int    {return tok(sym.TYPE, null); }
-bool    {return tok(sym.TYPE, null); }
-real    {return tok(sym.TYPE, null); }
+bool    {return tok(sym.TYPE, null); } // initially must be false
+int    {return tok(sym.TYPE, null); } // initially must be 0
+intset    {return tok(sym.TYPE, null); } // initially must be null
 // revisar si es correcto poner null
 
 // Signos de puntuación y operadores: 

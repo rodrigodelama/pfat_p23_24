@@ -7,7 +7,6 @@ parser code {:
   public void syntax_error(Symbol s) {
     report_error("Error de sintaxis en linea " + s.left, null);
   }
-  
 
   public void unrecovered_syntax_error(Symbol s) throws java.lang.Exception {
     report_fatal_error("", null);
@@ -73,21 +72,26 @@ parser code {:
 // Terminales
 terminal COMA, PC, PAREN, TESIS, BEGIN, END, ASIG, AND, OR, NOT, IF, THEN, PROG,
           DECL, WHILE, DO, PRINT_I, PRINT_B, BRAC, KET, IN, UNION, INTERSEC, CARD,
-          LOWEST_ELEM, MAS, MENOS, MUL, DIV, MAYOR, MENOR, IGUAL, IDENT, CLOG, CINT,
-          TYPE, EMPTYSET, OPUESTO; // revisar si es correcto añadir OPUESTO
+          LOWEST_ELEM, MAS, MENOS, MUL, DIV, MAYOR, MENOR, IGUAL, TYPE, EMPTYSET,
+          OPUESTO, DIFF; // revisar si es correcto añadir OPUESTO
+
+terminal Integer CINT;
+terminal String IDENT;
+terminal Boolean CLOG;
 
 // Conflictos de reducción
 //COMA, PC, TESIS, AND, OR, THEN, DO, KET, IN, UNION, INTERSEC, MAS, MENOS, MUL, DIV, MAYOR, MENOR, IGUAL
 
 // No terminales
 non terminal Prog Prog;
-non terminal LDecl LDecl;
-non terminal Decl Decl;
 non terminal IdentList IdentList;
-non terminal Body Body;
 non terminal StatementList StatementList;
+non terminal Body Body;
 non terminal Statement Statement; //stsimp o lo que sea //una interfaz para cada no terminal
 non terminal Exp Exp; // hay que definir Exp
+non terminal LDecl LDecl;
+non terminal Decl Decl;
+
 non terminal ExpList ExpList; // hay que definir ExpList tambien
 
 /*
@@ -122,23 +126,23 @@ precedence left OPUESTO; // - (opuesto)
 // Reglas de producción O SON Experesiones regulares ???
 
 start with Prog; // Simbolo Inicial
-//
-Prog ::= PROG IDENT:i DECL:d LDecl:ld Body:b {:RESULT=new Prog(i, d, ld, b); :} 
-         | PROG IDENT:i Body:b {:RESULT=new Prog(i, b); :} ;
-//
+//check
+Prog ::= PROG IDENT:i DECL:d LDecl:ld Body:b {:RESULT=new Prog1(i, d, ld, b); :} 
+         | PROG IDENT:i Body:b {:RESULT=new Prog2(i, b); :} ;
+//check
 LDecl ::= Decl:d PC {:RESULT=new LDecl1(d); :}
         | Decl:d PC LDecl:ld {:RESULT=new LDecl2(d, ld); :} ;
-//
+//check
 Decl ::= TYPE:t IdentList:il {:RESULT=new Decl(t, il); :} ;
-//
+//check
 IdentList ::= IDENT:i {:RESULT=new IdentList1(i); :}
             | IDENT:i COMA IdentList:il {:RESULT=new IdentList2(i, il); :} ;
-//
+//check
 Body ::= BEGIN StatementList:sl END PC {:RESULT=new Body(sl); :} ;
-//
+//check
 StatementList ::= Statement:s PC {:RESULT=new StatementList1(s); :}
                 | Statement:s PC StatementList:sl {:RESULT=new StatementList2(s, sl); :} ;
-//
+//check
 Statement ::= IDENT:i ASIG Exp:e {:RESULT=new Statement1(i, e); :}
             | PRINT_I PAREN IDENT:i TESIS {:RESULT=new Statement2(i); :}
             | PRINT_B PAREN IDENT:i TESIS {:RESULT=new Statement3(i); :}
@@ -147,17 +151,18 @@ Statement ::= IDENT:i ASIG Exp:e {:RESULT=new Statement1(i, e); :}
 // definir ExpList: 
       //Lista de expresiones
 // had to make this
+//check
 ExpList ::= Exp:e {:RESULT=new ExpList1(e); :}
           | Exp:e COMA ExpList:el {:RESULT=new ExpList2(e, el); :} ;
 // definir Exp:
       //Expresiones sin tipo definido
-//
+//check
 Exp ::= IDENT:s {:RESULT=new Variable(s); :} //Un identificador que sea el nombre de una variable. Será del tipo de la variable.
       | PAREN Exp:e TESIS {:RESULT=new Parentesis(e); :} //Una expresión entre paréntesis. Será del tipo de la expresión contenida dentro de los paréntesis.
       //Expresiones de tipo int
       | CINT:n {:RESULT=new ConstanteEntera(n.intValue()); :} //Una constante expresada en decimal.
       | Exp:e1 MAS Exp:e2 {:RESULT=new Suma(e1, e2); :} //Una suma de expresiones de tipo int utilizando el operador "+".
-      | Exp:e1 MENOS Exp:e2 {:RESULT=new Menos(e1, e2); :} //Una resta de expresiones de tipo int utilizando el operador "-".
+      | Exp:e1 MENOS Exp:e2 {:RESULT=new Resta(e1, e2); :} //Una resta de expresiones de tipo int utilizando el operador "-".
       | Exp:e1 MUL Exp:e2 {:RESULT=new Multiplicacion(e1, e2); :} //Una multiplicación de expresiones de tipo int utilizando el operador "*".
       | Exp:e1 DIV Exp:e2 {:RESULT=new Division(e1, e2); :} //Una división de expresiones de tipo int utilizando el operador "/".
       | MENOS Exp:e {:RESULT=new Opuesto(e); :} %prec OPUESTO //El opuesto de una expresión de tipo int, utilizando el símbolo habitual "-" antes de la expresión.
@@ -171,16 +176,14 @@ Exp ::= IDENT:s {:RESULT=new Variable(s); :} //Un identificador que sea el nombr
                 separadas por comas. Representa un conjunto de enteros cuyos elementos son los enteros resultado de
                 evaluar las subexpresiones.
               */
-      | BRAC ExpList:k KET {:RESULT=new Conjunto(k); :} //Un conjunto de enteros, utilizando los símbolos "{" y "}" para delimitar la lista de elementos.
+      | BRAC ExpList:el KET {:RESULT=new Conjunto(el); :} //Un conjunto de enteros, utilizando los símbolos "{" y "}" para delimitar la lista de elementos.
           //TODO: Repasar ExpList, tiene sentido?
       | Exp:e1 UNION Exp:e2 {:RESULT=new Union(e1, e2); :} //La unión de dos conjuntos de enteros, utilizando el operador union.
       | Exp:e1 INTERSEC Exp:e2 {:RESULT=new Interseccion(e1, e2); :} //La intersección de dos conjuntos de enteros, utilizando el operador intersec.
-          //TODO: Repasar Diff: la diferencia de conjuntos A - B es el conjunto que está formado por aquellos elementos de A que no pertenecen a B.
-          // La diferencia era tan facil como A - B
-          // Pero ya esta definida en la gramatica ????
+          // La diferencia es tan facil como A - B CON TRUCO
           // ES ESTO DIFF(A, B) = A - B
           //// NO ES ESTO DIFF(A, B) = A - (A INTERSEC B)
-      //| Exp:e1 MENOS Exp:e2 {:RESULT=new Diferencia(e1, e2); :} //La diferencia de dos conjuntos de enteros, utilizando el operador "-" y el operador intersec.
+      | Exp:e1 DIFF Exp:e2 {:RESULT=new Diferencia(e1, e2); :} //La diferencia de dos conjuntos de enteros, utilizando el operador "-".
       //Expresiones de tipo bool
       | CLOG:c {:RESULT=new ConstanteBooleana(c.booleanValue()); :} //Una constante de tipo bool.
       | Exp:e1 AND Exp:e2 {:RESULT=new And(e1, e2); :} //La conjunción de dos expresiones lógicas, utilizando el operador and.

@@ -1,3 +1,6 @@
+# pfat_p23_24
+# from root directory of the project run the following commands
+
 cd p1/java
 javac -d ../class Errors/*.java
 javac -d ../class AST/*.java
@@ -20,3 +23,6 @@ rm Yylex.java
 cp ../java/Main.java ../class/Main.java
 javac -d . Main.java
 rm Main.java
+rm /AST -rf
+rm /Errors -rf
+rm /JLex -rf

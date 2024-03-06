@@ -1,9 +1,9 @@
 package AST;
 
-public class Statement2 implements Statement {
+public class Statement3 implements Statement {
     public final String identifier;
 
-    public Statement2(String identifier) {
+    public Statement3(String identifier) {
         this.identifier = identifier;
     }
 }

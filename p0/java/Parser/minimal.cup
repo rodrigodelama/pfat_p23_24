@@ -18,20 +18,13 @@ precedence left PLUS, MINUS;
 precedence left TIMES;
 precedence left UMINUS;
 
-expr_list ::= expr_list expr_part | expr_part;
+expr_list ::= expr_list expr_part
+			| expr_part;
 expr_part ::= expr_part2 SEMI;
 expr_part2 ::= expr:e SEMI {: System.out.println(" = "+e+";"); :} ;
-expr      ::= NUMBER:n
-	      {: RESULT=n; :}
-            | expr:l PLUS expr:r
-	      {: RESULT=l + r; :}
-            | expr:l MINUS expr:r
-	      {: RESULT=l - r; :}
-            | MINUS expr:r
-	      {: RESULT=- r; :}
-	      %prec UMINUS
-	    | expr:l TIMES expr:r
-	      {: RESULT=l * r; :}
-	    | LPAREN expr:e RPAREN
-	      {: RESULT=e; :}
-	    ;
+expr      ::= NUMBER:n {: RESULT=n; :}
+            | expr:l PLUS expr:r {: RESULT=l + r; :}
+            | expr:l MINUS expr:r {: RESULT=l - r; :}
+            | MINUS expr:r {: RESULT=- r; :} %prec UMINUS
+	    	| expr:l TIMES expr:r {: RESULT=l * r; :}
+	    	| LPAREN expr:e RPAREN {: RESULT=e; :} ;

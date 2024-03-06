@@ -2,6 +2,7 @@
     "files.associations": {
         "parser": "java",
         "Yylex": "java",
-        "Yylex_commented": "java"
+        "Yylex_commented": "java",
+        "minimal.cup": "java"
     }
 }
