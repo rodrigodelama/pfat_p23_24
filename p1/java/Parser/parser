@@ -72,8 +72,7 @@ parser code {:
 // Terminales
 terminal COMA, PC, PAREN, TESIS, BEGIN, END, ASIG, AND, OR, NOT, IF, THEN, PROG,
           DECL, WHILE, DO, PRINT_I, PRINT_B, BRAC, KET, IN, UNION, INTERSEC, CARD,
-          LOWEST_ELEM, MAS, MENOS, MUL, DIV, MAYOR, MENOR, IGUAL, EMPTYSET,
-          OPUESTO; // revisar si es correcto añadir OPUESTO
+          LOWEST_ELEM, MAS, MENOS, MUL, DIV, MAYOR, MENOR, IGUAL, EMPTYSET, OPUESTO;
 
 terminal Integer CINT, TYPE;
 terminal String IDENT;

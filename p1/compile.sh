@@ -9,7 +9,7 @@ java -jar ../../class/java-cup-11b.jar parser
 mv *.java ../../class/
 cd ../../class/
 javac -cp ".;java-cup-11b-runtime.jar" -d . *.java
-        # ISA debes usar:
+        # ISA debes usar: (UNIX)
         javac -cp .;java-cup-11b-runtime.jar -d . *.java
 rm parser.java
 rm sym.java

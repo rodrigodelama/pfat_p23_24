@@ -71,4 +71,5 @@ true		{return tok(sym.CLOG, true); }
 false		{return tok(sym.CLOG, false); }
 
 [" "|\t|\n|\r]+	{ /* ignore */ }
+
 .	{throw new LexerException("Illegal character in line " + yyline);}
