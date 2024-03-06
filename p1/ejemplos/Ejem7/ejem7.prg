@@ -1,0 +1,22 @@
+pf2024 Ejem7
+
+decl
+
+intset a, b, c, d;
+int a1, b1, c1, d1;
+
+begin
+a:= {0, 1, 3, 5, 7, 9};
+b:= {0, 4, 2, 4, 6, 4, 8};
+c:= a union b;
+d:= a intersec b;
+a1:= card(a);
+printInt(a1);
+b1:= card(b);
+printInt(b1);
+c1:= card(c);
+printInt(c1);
+d1:= card(d);
+printInt(d1);
+
+end;

@@ -2,10 +2,11 @@ cd p1/java
 javac -d ../class Errors/*.java
 javac -d ../class AST/*.java
 cd Parser
-java -jar ../../class/CUP/java-cup-11b.jar parser
+java -jar ../../class/java-cup-11b.jar parser
 mv *.java ../../class/
 cd ../../class/
-javac -cp ./CUP/java-cup-11b-runtime.jar -d . *.java
+javac -cp ".;java-cup-11b-runtime.jar" -d . *.java
+        ISA debes usar javac -cp .;java-cup-11b-runtime.jar -d . *.java
 rm parser.java
 rm sym.java
 cd ../java

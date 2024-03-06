@@ -26,6 +26,7 @@ digito= [0-9]
 
 %%
 
+// Palabras clave
 begin   {return tok(sym.BEGIN, null); }
 and		{return tok(sym.AND, null); }
 or    {return tok(sym.OR, null); }
@@ -46,10 +47,14 @@ if    {return tok(sym.IF, null); }
 then    {return tok(sym.THEN, null); }
 end    {return tok(sym.END, null); }
 
-int    {return tok(sym.TYPE, null); } // valorar poner Int o otras movidas
+// Las palabras clave para los tipos básicos
+// int, bool, insetm are all TYPE
+int    {return tok(sym.TYPE, null); }
 bool    {return tok(sym.TYPE, null); }
+real    {return tok(sym.TYPE, null); }
+// revisar si es correcto poner null
 
-
+// Signos de puntuación y operadores: 
 ";"		{return tok(sym.PC, null); }
 ":="		{return tok(sym.ASIG, null); }
 "<"		{return tok(sym.MENOR, null); }
@@ -64,12 +69,15 @@ bool    {return tok(sym.TYPE, null); }
 "{"		{return tok(sym.BRAC, null); }
 "}"		{return tok(sym.KET, null); }
 
-{letra}({letra}|{digito})*	{return tok(sym.IDENT, yytext()); }
+// Identificadores
+{letra}({letra}|{digito})*	{return tok(sym.IDENT, yytext()); } // letra seguida de letras o digitos
 
-
-[0-9]+		{return tok(sym.CINT, Integer.parseInt(yytext())); }
+// Constantes
+[0-9]+		{return tok(sym.CINT, Integer.parseInt(yytext())); } // secuencia de digitos
 true		{return tok(sym.CLOG, true); }
 false		{return tok(sym.CLOG, false); }
 
+// Se deben consumir sin generar tokens:
+// espacios en blanco, tabuladores, saltos de línea y retornos de carro
 [" "|\t|\n|\r]+	{ /* ignore white space. */ }
 .	{throw new LexerException("Illegal character in line " + yyline);}

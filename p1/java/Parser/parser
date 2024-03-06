@@ -41,6 +41,8 @@ parser code {:
               | PRINT_B PAREN IDENT TESIS 
               | IF <Exp> THEN <StatementList> END 
               | WHILE <Exp> DO <StatementList> END
+
+    TODO: review ExpList - seems reasonable but compare with statement list
     <ExpList>-> <Exp> 
             | <Exp> COMA <ExpList>
 
@@ -78,18 +80,17 @@ terminal COMA, PC, PAREN, TESIS, BEGIN, END, ASIG, AND, OR, NOT, IF, THEN, PROG,
 //COMA, PC, TESIS, AND, OR, THEN, DO, KET, IN, UNION, INTERSEC, MAS, MENOS, MUL, DIV, MAYOR, MENOR, IGUAL
 
 // No terminales
-non terminal pf2024 pf2024;
+non terminal Prog Prog;
 non terminal LDecl LDecl;
 non terminal Decl Decl;
 non terminal IdentList IdentList;
 non terminal Body Body;
 non terminal StatementList StatementList;
-non terminal Statement Statement; 
+non terminal Statement Statement; //stsimp o lo que sea //una interfaz para cada no terminal
 non terminal Exp Exp; // hay que definir Exp
 non terminal ExpList ExpList; // hay que definir ExpList tambien
 
 /*
-  Reglas de precedencia
   La precedencia de los operadores es, de menor a mayor:
   1. union
   2. intersec
@@ -105,6 +106,7 @@ non terminal ExpList ExpList; // hay que definir ExpList tambien
   Todos los operadores asocian por la izquierda.
 */
 
+// Reglas de precedencia
 precedence left UNION;
 precedence left INTERSEC;
 precedence left IN;
@@ -117,20 +119,26 @@ precedence left MAS, MENOS;
 precedence left MUL, DIV;
 precedence left OPUESTO; // - (opuesto)
 
-// Reglas de producción
+// Reglas de producción O SON Experesiones regulares ???
 
-start with pf2024; // Simbolo Inicial
-
-pf2024 ::= PROG IDENT:i DECL:d LDecl:ld Body:b {:RESULT=new Prog(i, d, ld, b); :} 
-         | PROG IDENT:i Body:b {:RESULT=new Prog($2, $3); :} ;
+start with Prog; // Simbolo Inicial
+//
+Prog ::= PROG IDENT:i DECL:d LDecl:ld Body:b {:RESULT=new Prog(i, d, ld, b); :} 
+         | PROG IDENT:i Body:b {:RESULT=new Prog(i, b); :} ;
+//
 LDecl ::= Decl:d PC {:RESULT=new LDecl1(d); :}
         | Decl:d PC LDecl:ld {:RESULT=new LDecl2(d, ld); :} ;
+//
 Decl ::= TYPE:t IdentList:il {:RESULT=new Decl(t, il); :} ;
+//
 IdentList ::= IDENT:i {:RESULT=new IdentList1(i); :}
             | IDENT:i COMA IdentList:il {:RESULT=new IdentList2(i, il); :} ;
+//
 Body ::= BEGIN StatementList:sl END PC {:RESULT=new Body(sl); :} ;
+//
 StatementList ::= Statement:s PC {:RESULT=new StatementList1(s); :}
                 | Statement:s PC StatementList:sl {:RESULT=new StatementList2(s, sl); :} ;
+//
 Statement ::= IDENT:i ASIG Exp:e {:RESULT=new Statement1(i, e); :}
             | PRINT_I PAREN IDENT:i TESIS {:RESULT=new Statement2(i); :}
             | PRINT_B PAREN IDENT:i TESIS {:RESULT=new Statement3(i); :}
@@ -138,10 +146,12 @@ Statement ::= IDENT:i ASIG Exp:e {:RESULT=new Statement1(i, e); :}
             | WHILE Exp:e DO StatementList:sl END {:RESULT=new Statement5(e, sl); :} ;
 // definir ExpList: 
       //Lista de expresiones
+// had to make this
 ExpList ::= Exp:e {:RESULT=new ExpList1(e); :}
           | Exp:e COMA ExpList:el {:RESULT=new ExpList2(e, el); :} ;
 // definir Exp:
       //Expresiones sin tipo definido
+//
 Exp ::= IDENT:s {:RESULT=new Variable(s); :} //Un identificador que sea el nombre de una variable. Será del tipo de la variable.
       | PAREN Exp:e TESIS {:RESULT=new Parentesis(e); :} //Una expresión entre paréntesis. Será del tipo de la expresión contenida dentro de los paréntesis.
       //Expresiones de tipo int
@@ -162,11 +172,15 @@ Exp ::= IDENT:s {:RESULT=new Variable(s); :} //Un identificador que sea el nombr
                 evaluar las subexpresiones.
               */
       | BRAC ExpList:k KET {:RESULT=new Conjunto(k); :} //Un conjunto de enteros, utilizando los símbolos "{" y "}" para delimitar la lista de elementos.
-          //TODO: Repasar ExpList, tiene senttido?
+          //TODO: Repasar ExpList, tiene sentido?
       | Exp:e1 UNION Exp:e2 {:RESULT=new Union(e1, e2); :} //La unión de dos conjuntos de enteros, utilizando el operador union.
       | Exp:e1 INTERSEC Exp:e2 {:RESULT=new Interseccion(e1, e2); :} //La intersección de dos conjuntos de enteros, utilizando el operador intersec.
           //TODO: Repasar Diff: la diferencia de conjuntos A - B es el conjunto que está formado por aquellos elementos de A que no pertenecen a B.
-      | Exp:e1 MENOS INTERSEC Exp:e2 {:RESULT=new Diferencia(e1, new Interseccion(e1, e1)); :} //La diferencia de dos conjuntos de enteros, utilizando el operador "-" y el operador intersec.
+          // La diferencia era tan facil como A - B
+          // Pero ya esta definida en la gramatica ????
+          // ES ESTO DIFF(A, B) = A - B
+          //// NO ES ESTO DIFF(A, B) = A - (A INTERSEC B)
+      //| Exp:e1 MENOS Exp:e2 {:RESULT=new Diferencia(e1, e2); :} //La diferencia de dos conjuntos de enteros, utilizando el operador "-" y el operador intersec.
       //Expresiones de tipo bool
       | CLOG:c {:RESULT=new ConstanteBooleana(c.booleanValue()); :} //Una constante de tipo bool.
       | Exp:e1 AND Exp:e2 {:RESULT=new And(e1, e2); :} //La conjunción de dos expresiones lógicas, utilizando el operador and.

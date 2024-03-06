@@ -1,5 +1,7 @@
 {
     "files.associations": {
-        "parser": "c"
+        "parser": "java",
+        "Yylex": "java",
+        "Yylex_commented": "java"
     }
 }
