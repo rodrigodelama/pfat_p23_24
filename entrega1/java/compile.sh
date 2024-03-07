@@ -11,7 +11,7 @@ cd Parser
 java -jar ../../class/java-cup-11b.jar parser
 mv *.java ../../class/
 cd ../../class/
-javac -cp .;java-cup-11b-runtime.jar -d . *.java
+javac -cp .:java-cup-11b-runtime.jar -d . *.java
 rm parser.java
 rm sym.java
 cd ../java
@@ -20,10 +20,10 @@ cd Lexer
 java -cp ../../class JLex.Main Yylex
 mv Yylex.java ../../class/Yylex.java
 cd ../../class/
-javac -cp .;java-cup-11b-runtime.jar -d . Yylex.java
+javac -cp .:java-cup-11b-runtime.jar -d . Yylex.java
 rm Yylex.java
 cp ../java/Main.java ../class/Main.java
-javac -cp .;java-cup-11b-runtime.jar -d . Main.java
+javac -cp .:java-cup-11b-runtime.jar -d . Main.java
 rm Main.java
 
 # Now you can run the program with the following command:

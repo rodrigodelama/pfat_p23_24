@@ -6,7 +6,8 @@
 #!/bin/bash
 
 # Clean up after execution (for next compilation)
-rm AST
-rm Errors
-rm Parser
-rm *.java
+rm AST -rf
+rm Errors -rf
+rm Parser -rf
+
+cd ../java
