@@ -5,7 +5,7 @@ import AST.*;
 
 parser code {:
   public void syntax_error(Symbol s) {
-    report_error("Error de sintaxis en linea " + s.left, null);
+    report_error("Error de sintaxis en linea " + s.left + "\n\n", null);
   }
 
   public void unrecovered_syntax_error(Symbol s) throws java.lang.Exception {
@@ -122,7 +122,7 @@ precedence left OPUESTO; // - (opuesto)
 // Reglas de producción O SON Experesiones regulares ???
 start with Prog; // Simbolo Inicial
 //check
-Prog ::= PROG IDENT:i Decl:d LDecl:ld Body:b {:RESULT=new Prog1(i, d, ld, b); :} 
+Prog ::= PROG IDENT:i DECL LDecl:ld Body:b {:RESULT=new Prog1(i, ld, b); :} 
          | PROG IDENT:i Body:b {:RESULT=new Prog2(i, b); :} ;
 //check
 LDecl ::= Decl:d PC {:RESULT=new LDecl1(d); :}

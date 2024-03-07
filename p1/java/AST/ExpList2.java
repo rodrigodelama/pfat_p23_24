@@ -1,6 +1,6 @@
 package AST;
 
-public class ExpList2 implements ExpList {
+public class ExpList2 implements ExpList, Exp {
     public final Exp exp;
     public final ExpList explist;
     
