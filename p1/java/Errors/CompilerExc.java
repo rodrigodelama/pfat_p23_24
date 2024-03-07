@@ -1,5 +1,5 @@
 package Errors;
 
-public class CompilerExc {
+public class CompilerExc extends Exception {
 
 }

@@ -78,15 +78,13 @@ terminal Integer CINT, TYPE;
 terminal String IDENT;
 terminal Boolean CLOG;
 
-// Conflictos de reducción
-//COMA, PC, TESIS, AND, OR, THEN, DO, KET, IN, UNION, INTERSEC, MAS, MENOS, MUL, DIV, MAYOR, MENOR, IGUAL
-
 // No terminales - padres de subclases
+// Declararemos una interfaz para cada no terminal
 non terminal Prog Prog;
 non terminal IdentList IdentList;
 non terminal StatementList StatementList;
 non terminal Body Body;
-non terminal Statement Statement; //stsimp o lo que sea //una interfaz para cada no terminal
+non terminal Statement Statement; //stsimp o lo que sea
 non terminal Exp Exp; // hay que definir Exp
 non terminal LDecl LDecl;
 non terminal Decl Decl;
@@ -122,7 +120,6 @@ precedence left MUL, DIV;
 precedence left OPUESTO; // - (opuesto)
 
 // Reglas de producción O SON Experesiones regulares ???
-
 start with Prog; // Simbolo Inicial
 //check
 Prog ::= PROG IDENT:i Decl:d LDecl:ld Body:b {:RESULT=new Prog1(i, d, ld, b); :} 
@@ -147,9 +144,8 @@ Statement ::= IDENT:i ASIG Exp:e {:RESULT=new Statement1(i, e); :}
             | IF Exp:e THEN StatementList:sl END {:RESULT=new Statement4(e, sl); :}
             | WHILE Exp:e DO StatementList:sl END {:RESULT=new Statement5(e, sl); :} ;
 // definir ExpList: 
-      //Lista de expresiones
-// had to make this
 //check
+        //Lista de expresiones
 ExpList ::= Exp:e {:RESULT=new ExpList1(e); :}
           | Exp:e COMA ExpList:el {:RESULT=new ExpList2(e, el); :} ;
 // definir Exp:
@@ -161,7 +157,7 @@ Exp ::= IDENT:s {:RESULT=new Variable(s); :} //Un identificador que sea el nombr
       //Expresiones de tipo int
       | CINT:n {:RESULT=new ConstanteEntera(n.intValue()); :} //Una constante expresada en decimal.
       | Exp:e1 MAS Exp:e2 {:RESULT=new Suma(e1, e2); :} //Una suma de expresiones de tipo int utilizando el operador "+".
-      | Exp:e1 MENOS Exp:e2 {:RESULT=new Resta(e1, e2); :} //Una resta de expresiones de tipo int utilizando el operador "-".
+      | Exp:e1 MENOS Exp:e2 {:RESULT=new RestaODiff(e1, e2); :} //Una resta de expresiones de tipo int utilizando el operador "-".
       | Exp:e1 MUL Exp:e2 {:RESULT=new Multiplicacion(e1, e2); :} //Una multiplicación de expresiones de tipo int utilizando el operador "*".
       | Exp:e1 DIV Exp:e2 {:RESULT=new Division(e1, e2); :} //Una división de expresiones de tipo int utilizando el operador "/".
       | MENOS Exp:e {:RESULT=new Opuesto(e); :} %prec OPUESTO //El opuesto de una expresión de tipo int, utilizando el símbolo habitual "-" antes de la expresión.

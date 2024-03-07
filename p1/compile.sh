@@ -9,8 +9,8 @@ java -jar ../../class/java-cup-11b.jar parser
 mv *.java ../../class/
 cd ../../class/
 javac -cp ".;java-cup-11b-runtime.jar" -d . *.java
-        # ISA debes usar: (UNIX)
-        javac -cp .;java-cup-11b-runtime.jar -d . *.java
+        # ISA debes usar: (UNIX) sin comillas siempre
+        # javac -cp .;java-cup-11b-runtime.jar -d . *.java
 rm parser.java
 rm sym.java
         # IGNORAR ESTE PASO
@@ -21,12 +21,14 @@ cd ../java/Lexer
 java -cp ../../class JLex.Main Yylex
 mv Yylex.java ../../class/Yylex.java
 cd ../../class/
-javac -d . Yylex.java
+javac -cp ".;java-cup-11b-runtime.jar" -d . Yylex.java
 rm Yylex.java
 cp ../java/Main.java ../class/Main.java
-javac -d . Main.java
+javac -cp ".;java-cup-11b-runtime.jar" -d . Main.java
 rm Main.java
 rm AST
 rm Errors
+rm Parser
+        # IGNORAR ESTE PASO
         # rm JLex
 rm *.java
