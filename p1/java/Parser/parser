@@ -13,62 +13,6 @@ parser code {:
   }
 :};
 
-/*
-  DEFINICIÓN DE LA GRAMÁTICA:
-
-  G=<ET, EN, S, P>
-  ET= {COMA, PC, PAREN, TESIS, BEGIN, END, ASIG, AND, OR, NOT, 
-      IF, THEN, PROG, DECL, WHILE, DO, PRINT_I, PRINT_B, BRAC, KET, 
-      IN, UNION, INTERSEC, CARD, LOWEST_ELEM, MAS, MENOS, MUL, 
-      DIV, MAYOR, MENOR, IGUAL, IDENT, CLOG, CINT, :t, EMPTYSET}
-  EN= {S, <IdentList>, <StatementList>, <Body>, <Statement>,
-      <Exp>, <LDecl>, <Decl>}
-  S= S
-  P= {
-    S->  PROG IDENT DECL <LDecl> <Body> 
-      |  PROG IDENT <Body> 
-    <LDecl>-> <Decl> PC
-          | <Decl> PC <LDecl>
-    <Decl>-> TYPE <IdentList>
-    <IdentList>-> IDENT
-              | IDENT COMA <IdentList>
-    <Body>-> BEGIN <StatementList> END PC
-    <StatementList>-> <Statement> PC 
-                  | <Statement> PC <StatementList>
-    <Statement>-> IDENT ASIG <Exp> 
-              | PRINT_I PAREN IDENT TESIS 
-              | PRINT_B PAREN IDENT TESIS 
-              | IF <Exp> THEN <StatementList> END 
-              | WHILE <Exp> DO <StatementList> END
-
-    TODO: review ExpList - seems reasonable but compare with statement list
-    <ExpList>-> <Exp> 
-            | <Exp> COMA <ExpList>
-
-    TODO: review Exp - copilot did this list below
-    <Exp>-> IDENT 
-          | PAREN <Exp> TESIS 
-          | CINT 
-          | <Exp> MAS <Exp> 
-          | <Exp> MENOS <Exp> 
-          | <Exp> MUL <Exp> 
-          | <Exp> DIV <Exp> 
-          | MENOS <Exp> 
-          | CARD PAREN <Exp> TESIS 
-          | LOWEST_ELEM PAREN <Exp> TESIS 
-          | EMPTYSET 
-          | BRAC <ExpList> KET 
-          | <Exp> UNION <Exp> 
-          | <Exp> INTERSEC <Exp> 
-          | <Exp> IN <Exp> 
-          | CLOG 
-          | <Exp> AND <Exp> 
-          | <Exp> OR <Exp> 
-          | NOT <Exp> 
-          | <Exp> IGUAL <Exp>
-  }
-*/
-
 // Terminales
 terminal COMA, PC, PAREN, TESIS, BEGIN, END, ASIG, AND, OR, NOT, IF, THEN, PROG,
           DECL, WHILE, DO, PRINT_I, PRINT_B, BRAC, KET, IN, UNION, INTERSEC, CARD,
@@ -84,27 +28,11 @@ non terminal Prog Prog;
 non terminal IdentList IdentList;
 non terminal StatementList StatementList;
 non terminal Body Body;
-non terminal Statement Statement; //stsimp o lo que sea
-non terminal Exp Exp; // hay que definir Exp
+non terminal Statement Statement;
+non terminal Exp Exp;
 non terminal LDecl LDecl;
 non terminal Decl Decl;
-non terminal ExpList ExpList; // hay que definir ExpList tambien
-
-/*
-  La precedencia de los operadores es, de menor a mayor:
-  1. union
-  2. intersec
-  3. in
-  4. or
-  5. and
-  6. not
-  7. =
-  8. < y >
-  9. + y -
-  10. * y /
-  11. - (opuesto)
-  Todos los operadores asocian por la izquierda.
-*/
+non terminal ExpList ExpList;
 
 // Reglas de precedencia
 precedence left UNION;
@@ -121,35 +49,35 @@ precedence left OPUESTO; // - (opuesto)
 
 // Reglas de producción O SON Experesiones regulares ???
 start with Prog; // Simbolo Inicial
-//check
+
 Prog ::= PROG IDENT:i DECL LDecl:ld Body:b {:RESULT=new Prog1(i, ld, b); :} 
-         | PROG IDENT:i Body:b {:RESULT=new Prog2(i, b); :} ;
-//check
+       | PROG IDENT:i Body:b {:RESULT=new Prog2(i, b); :} ;
+
 LDecl ::= Decl:d PC {:RESULT=new LDecl1(d); :}
         | Decl:d PC LDecl:ld {:RESULT=new LDecl2(d, ld); :} ;
-//check
+
 Decl ::= TYPE:t IdentList:il {:RESULT=new Decl(t.intValue(), il); :} ;
-//check
+
 IdentList ::= IDENT:i {:RESULT=new IdentList1(i); :}
             | IDENT:i COMA IdentList:il {:RESULT=new IdentList2(i, il); :} ;
-//check
+
 Body ::= BEGIN StatementList:sl END PC {:RESULT=new Body(sl); :} ;
-//check
+
 StatementList ::= Statement:s PC {:RESULT=new StatementList1(s); :}
                 | Statement:s PC StatementList:sl {:RESULT=new StatementList2(s, sl); :} ;
-//check
+
 Statement ::= IDENT:i ASIG Exp:e {:RESULT=new Statement1(i, e); :}
             | PRINT_I PAREN IDENT:i TESIS {:RESULT=new Statement2(i); :}
             | PRINT_B PAREN IDENT:i TESIS {:RESULT=new Statement3(i); :}
             | IF Exp:e THEN StatementList:sl END {:RESULT=new Statement4(e, sl); :}
             | WHILE Exp:e DO StatementList:sl END {:RESULT=new Statement5(e, sl); :} ;
 // definir ExpList: 
-//check
+
         //Lista de expresiones
 ExpList ::= Exp:e {:RESULT=new ExpList1(e); :}
           | Exp:e COMA ExpList:el {:RESULT=new ExpList2(e, el); :} ;
 // definir Exp:
-//check
+
       //Expresiones sin tipo definido
 Exp ::= IDENT:s {:RESULT=new Variable(s); :} //Un identificador que sea el nombre de una variable. Será del tipo de la variable.
       | PAREN Exp:e TESIS {:RESULT=new Parentesis(e); :} //Una expresión entre paréntesis. Será del tipo de la expresión contenida dentro de los paréntesis.
@@ -176,9 +104,8 @@ Exp ::= IDENT:s {:RESULT=new Variable(s); :} //Un identificador que sea el nombr
           //TODO: Repasar ExpList, tiene sentido?
       | Exp:e1 UNION Exp:e2 {:RESULT=new Union(e1, e2); :} //La unión de dos conjuntos de enteros, utilizando el operador union.
       | Exp:e1 INTERSEC Exp:e2 {:RESULT=new Interseccion(e1, e2); :} //La intersección de dos conjuntos de enteros, utilizando el operador intersec.
-          // La diferencia es tan facil como A - B pero CON TRUCO //FIXME:
-          // ES ESTO DIFF(A, B) = A - B
-          //// NO ES ESTO DIFF(A, B) = A - (A INTERSEC B)
+          // La diferencia es tan facil como A - B
+          //      ES LA MISMA REGLA QUE MENOS
       // | Exp:e1 MENOS Exp:e2 {:RESULT=new Diferencia(e1, e2); :} //La diferencia de dos conjuntos de enteros, utilizando el operador "-".
       
       //Expresiones de tipo bool

@@ -1,0 +1,68 @@
+
+DEFINICIÓN DE LA GRAMÁTICA:
+
+G=<ET, EN, S, P>
+ET= {COMA, PC, PAREN, TESIS, BEGIN, END, ASIG, AND, OR, NOT, 
+    IF, THEN, PROG, DECL, WHILE, DO, PRINT_I, PRINT_B, BRAC, KET, 
+    IN, UNION, INTERSEC, CARD, LOWEST_ELEM, MAS, MENOS, MUL, 
+    DIV, MAYOR, MENOR, IGUAL, IDENT, CLOG, CINT, :t, EMPTYSET}
+EN= {S, <IdentList>, <StatementList>, <Body>, <Statement>,
+    <Exp>, <LDecl>, <Decl>}
+S= S
+P= {
+S->  PROG IDENT DECL <LDecl> <Body> 
+    |  PROG IDENT <Body> 
+<LDecl>-> <Decl> PC
+        | <Decl> PC <LDecl>
+<Decl>-> TYPE <IdentList>
+<IdentList>-> IDENT
+            | IDENT COMA <IdentList>
+<Body>-> BEGIN <StatementList> END PC
+<StatementList>-> <Statement> PC 
+                | <Statement> PC <StatementList>
+<Statement>-> IDENT ASIG <Exp> 
+            | PRINT_I PAREN IDENT TESIS 
+            | PRINT_B PAREN IDENT TESIS 
+            | IF <Exp> THEN <StatementList> END 
+            | WHILE <Exp> DO <StatementList> END
+
+TODO: review ExpList - seems reasonable but compare with statement list
+<ExpList>-> <Exp> 
+        | <Exp> COMA <ExpList>
+
+TODO: review Exp - copilot did this list below
+<Exp>-> IDENT 
+        | PAREN <Exp> TESIS 
+        | CINT 
+        | <Exp> MAS <Exp> 
+        | <Exp> MENOS <Exp> 
+        | <Exp> MUL <Exp> 
+        | <Exp> DIV <Exp> 
+        | MENOS <Exp> 
+        | CARD PAREN <Exp> TESIS 
+        | LOWEST_ELEM PAREN <Exp> TESIS 
+        | EMPTYSET 
+        | BRAC <ExpList> KET 
+        | <Exp> UNION <Exp> 
+        | <Exp> INTERSEC <Exp> 
+        | <Exp> IN <Exp> 
+        | CLOG 
+        | <Exp> AND <Exp> 
+        | <Exp> OR <Exp> 
+        | NOT <Exp> 
+        | <Exp> IGUAL <Exp>
+}
+
+La precedencia de los operadores es, de menor a mayor:
+1. union
+2. intersec
+3. in
+4. or
+5. and
+6. not
+7. =
+8. < y >
+9. + y -
+10. * y /
+11. - (opuesto)
+Todos los operadores asocian por la izquierda.

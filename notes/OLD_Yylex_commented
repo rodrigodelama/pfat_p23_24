@@ -65,6 +65,7 @@ intset    {return tok(sym.TYPE, null); } // initially must be null
 "*"		{return tok(sym.MUL, null); }
 "("		{return tok(sym.PAREN, null); }
 ")"		{return tok(sym.TESIS, null); }
+"="   {return tok(sym.IGUAL, null); }
 ","		{return tok(sym.COMA, null); }
 "{"		{return tok(sym.BRAC, null); }
 "}"		{return tok(sym.KET, null); }
