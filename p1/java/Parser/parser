@@ -92,7 +92,8 @@ Exp ::= IDENT:s {:RESULT=new Variable(s); :} //Un identificador que sea el nombr
           //Nota: el código generado en la práctica 3 debe lanzar una excepcióncuando lowest_elem sea aplicado al conjunto vacío.
       
       //Expresiones de tipo intset (conjunto de enteros)
-      | EMPTYSET {:RESULT=new ConjuntoVacio(); :} //Un conjunto vacío.
+      | BRAC KET {:RESULT=new ConjuntoVacio(); :} //Un conjunto vacío, utilizando los símbolos "{" y "}" para delimitar la lista de elementos.
+      | EMPTYSET {:RESULT=new ConjuntoVacio(); :} //Un conjunto vacío, utilizando el símbolo emptyset.
             /*
               Una expresión que comienza por {, termina por } y contiene una lista de subexpresiones de tipo int,
               separadas por comas. Representa un conjunto de enteros cuyos elementos son los enteros resultado de
