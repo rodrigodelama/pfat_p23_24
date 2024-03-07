@@ -6,7 +6,7 @@ import Parser.sym;
 %%
 %{
 private java_cup.runtime.Symbol tok(int k, Object value) {
-  //System.out.println("Token: " + k); // para depurar
+  System.out.println("Token: " + k); // para depurar
   return new java_cup.runtime.Symbol(k, yyline, 0, value); 
 }
 %}
@@ -60,6 +60,7 @@ intset    {return tok(sym.TYPE, 3); }
 "*"		{return tok(sym.MUL, null); }
 "("		{return tok(sym.PAREN, null); }
 ")"		{return tok(sym.TESIS, null); }
+"="		{return tok(sym.IGUAL, null); }
 ","		{return tok(sym.COMA, null); }
 "{"		{return tok(sym.BRAC, null); }
 "}"		{return tok(sym.KET, null); }
