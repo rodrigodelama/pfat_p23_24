@@ -22,8 +22,8 @@ terminal Integer CINT, TYPE;
 terminal String IDENT;
 terminal Boolean CLOG;
 
-// No terminales - padres de subclases
-// Declararemos una interfaz para cada no terminal
+// No terminales
+// Declararemos una interfaz por cada no terminal
 non terminal Prog Prog;
 non terminal IdentList IdentList;
 non terminal StatementList StatementList;
@@ -47,7 +47,7 @@ precedence left MAS, MENOS;
 precedence left MUL, DIV;
 precedence left OPUESTO; // - (opuesto)
 
-// Reglas de producción O SON Experesiones regulares ???
+// Reglas de producción
 start with Prog; // Simbolo Inicial
 
 Prog ::= PROG IDENT:i DECL LDecl:ld Body:b {:RESULT=new Prog1(i, ld, b); :} 
@@ -71,14 +71,12 @@ Statement ::= IDENT:i ASIG Exp:e {:RESULT=new Statement1(i, e); :}
             | PRINT_B PAREN IDENT:i TESIS {:RESULT=new Statement3(i); :}
             | IF Exp:e THEN StatementList:sl END {:RESULT=new Statement4(e, sl); :}
             | WHILE Exp:e DO StatementList:sl END {:RESULT=new Statement5(e, sl); :} ;
-// definir ExpList: 
 
-        //Lista de expresiones
+//Lista de expresiones
 ExpList ::= Exp:e {:RESULT=new ExpList1(e); :}
           | Exp:e COMA ExpList:el {:RESULT=new ExpList2(e, el); :} ;
-// definir Exp:
 
-      //Expresiones sin tipo definido
+//Expresiones sin tipo definido
 Exp ::= IDENT:s {:RESULT=new Variable(s); :} //Un identificador que sea el nombre de una variable. Será del tipo de la variable.
       | PAREN Exp:e TESIS {:RESULT=new Parentesis(e); :} //Una expresión entre paréntesis. Será del tipo de la expresión contenida dentro de los paréntesis.
       
@@ -95,20 +93,18 @@ Exp ::= IDENT:s {:RESULT=new Variable(s); :} //Un identificador que sea el nombr
       
       //Expresiones de tipo intset (conjunto de enteros)
       | EMPTYSET {:RESULT=new ConjuntoVacio(); :} //Un conjunto vacío.
-              /*
-                Una expresión que comienza por {, termina por } y contiene una lista de subexpresiones de tipo int,
-                separadas por comas. Representa un conjunto de enteros cuyos elementos son los enteros resultado de
-                evaluar las subexpresiones.
-              */
+            /*
+              Una expresión que comienza por {, termina por } y contiene una lista de subexpresiones de tipo int,
+              separadas por comas. Representa un conjunto de enteros cuyos elementos son los enteros resultado de
+              evaluar las subexpresiones.
+            */
       | BRAC ExpList:el KET {:RESULT=new Conjunto(el); :} //Un conjunto de enteros, utilizando los símbolos "{" y "}" para delimitar la lista de elementos.
           //TODO: Repasar ExpList, tiene sentido?
       | Exp:e1 UNION Exp:e2 {:RESULT=new Union(e1, e2); :} //La unión de dos conjuntos de enteros, utilizando el operador union.
       | Exp:e1 INTERSEC Exp:e2 {:RESULT=new Interseccion(e1, e2); :} //La intersección de dos conjuntos de enteros, utilizando el operador intersec.
-          // La diferencia es tan facil como A - B
-          //      ES LA MISMA REGLA QUE MENOS
-      // | Exp:e1 MENOS Exp:e2 {:RESULT=new Diferencia(e1, e2); :} //La diferencia de dos conjuntos de enteros, utilizando el operador "-".
+          // exp DIFF exp ES LA MISMA REGLA QUE MENOS, ya veremos como se soluciona más adelante
       
-      //Expresiones de tipo bool
+          //Expresiones de tipo bool
       | CLOG:c {:RESULT=new ConstanteBooleana(c.booleanValue()); :} //Una constante de tipo bool.
       | Exp:e1 AND Exp:e2 {:RESULT=new And(e1, e2); :} //La conjunción de dos expresiones lógicas, utilizando el operador and.
       | Exp:e1 OR Exp:e2 {:RESULT=new Or(e1, e2); :} //La disyunción de dos expresiones lógicas, utilizando el operador or.
