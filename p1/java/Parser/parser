@@ -20,7 +20,7 @@ terminal COMA, PC, PAREN, TESIS, BEGIN, END, ASIG, AND, OR, NOT, IF, THEN, PROG,
 
 terminal Integer CINT, TYPE;
 terminal String IDENT;
-terminal Boolean CLOG;
+terminal Boolean CLOG; // possibly have to add TYPE
 
 // No terminales
 // Declararemos una interfaz por cada no terminal
