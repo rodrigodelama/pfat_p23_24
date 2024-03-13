@@ -1,7 +1,6 @@
 package Errors;
 
 public class LexerException extends CompilerExc {
-
   private String msg;
 
   public LexerException(String s) {
@@ -11,5 +10,4 @@ public class LexerException extends CompilerExc {
   public String toString() {
     return msg;
   }
-
 }
