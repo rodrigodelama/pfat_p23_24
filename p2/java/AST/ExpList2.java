@@ -13,7 +13,9 @@ package AST;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
+import Compiler.Typ;
 import Errors.CompilerExc;
+import Errors.TypExc;
 
 public class ExpList2 implements ExpList, Exp {
     public final Exp exp;
@@ -24,10 +26,16 @@ public class ExpList2 implements ExpList, Exp {
         this.explist = explist;
     }
 
-    // no need to compute type ???
     public int computeTyp() throws CompilerExc {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'computeTyp'");
+        int ct1, ct2;
+        ct1 = exp.computeTyp();
+        ct2 = explist.computeTyp();
+
+        if ((ct1 == Typ.t_int) && (ct2 == Typ.t_intset)) {
+            return Typ.t_intset;
+        } else {
+            throw new TypExc("ERROR: en ExpList2");
+        }
     }
 
     public void generateCode(BufferedWriter w) throws IOException {
@@ -35,5 +43,4 @@ public class ExpList2 implements ExpList, Exp {
         w.write(", ");
         explist.generateCode(w);
     }
-
 }

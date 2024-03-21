@@ -43,7 +43,7 @@ public class Main
           // Added new code for p2
           Prog raiz = (Prog) sroot.value;
           raiz.computeAH1();
-          raiz.compruebaTipos();
+          raiz.computeTyp();
           System.out.println("Analisis Semantico correcto");
           // End of new code for p2
           

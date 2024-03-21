@@ -18,4 +18,14 @@ public class Prog2 implements Prog {
         this.identifier = identifier;
         this.body = body;
     }
+
+    public void computeAH1() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'computeAH1'");
+    }
+
+    public void computeTyp() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'computeTyp'");
+    }
 }

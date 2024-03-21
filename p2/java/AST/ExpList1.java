@@ -31,13 +31,11 @@ public class ExpList1 implements ExpList, Exp {
         if (ct == Typ.t_int) {
             return Typ.t_int;
         } else {
-            throw new TypExc("ERROR: en lista de expresiones");
+            throw new TypExc("ERROR: en ExpList1");
         }
     }
 
     public void generateCode(BufferedWriter w) throws IOException {
         exp.generateCode(w);
     }
-
-
 }

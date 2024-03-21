@@ -33,7 +33,7 @@ public class Igual implements Exp {
 
         //TODO: ct1 will equal a string
         if((ct1 == Typ.t_int) && (ct2 == Typ.t_int)) {
-            return Typ.t_int;
+            return Typ.t_bool; // either true or false
         } else {
             throw new TypExc("ERROR: en operación aritmética Divison (/)");
         }
@@ -41,7 +41,7 @@ public class Igual implements Exp {
 
     public void generateCode(BufferedWriter w) throws IOException {
         exp1.generateCode(w);
-        w.write(" = ");
+        w.write(" = "); //this is just an assignment
         exp2.generateCode(w); 
     }
 }

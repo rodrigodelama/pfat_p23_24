@@ -13,6 +13,7 @@ package AST;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
+import Compiler.Typ;
 import Errors.CompilerExc;
 
 public class Conjunto implements Exp {
@@ -24,13 +25,12 @@ public class Conjunto implements Exp {
 
     // i dont think we need to compute type here
     public int computeTyp() throws CompilerExc {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'computeTyp'");
+        return Typ.t_intset;
     }
 
     public void generateCode(BufferedWriter w) throws IOException {
-        System.out.print("{");
+        System.out.print("{ ");
         expList.generateCode(w);
-        System.out.print("}");
+        System.out.print(" }");
     }
 }

@@ -11,5 +11,6 @@
 package AST;
 
 public interface Prog {
-
+    public void computeAH1();
+    public void computeTyp();
 }

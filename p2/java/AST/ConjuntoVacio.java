@@ -13,6 +13,7 @@ package AST;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
+import Compiler.Typ;
 import Errors.CompilerExc;
 
 public class ConjuntoVacio implements Exp {
@@ -21,8 +22,7 @@ public class ConjuntoVacio implements Exp {
 
     //maybe intset ??
     public int computeTyp() throws CompilerExc {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'computeTyp'");
+        return Typ.t_intset;
     }
 
     public void generateCode(BufferedWriter w) throws IOException {
