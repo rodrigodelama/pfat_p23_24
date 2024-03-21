@@ -13,8 +13,9 @@ package AST;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
-import Compiler.*;
-import Errors.*;
+import Compiler.Typ;
+import Errors.CompilerExc;
+import Errors.TypExc;
 
 public class Suma implements Exp {
     public final Exp exp1;
@@ -33,7 +34,7 @@ public class Suma implements Exp {
         if((ct1 == Typ.t_int) && (ct2 == Typ.t_int)) {
             return Typ.t_int;
         } else {
-            throw new TypExc("ERROR: en Suma (+)");
+            throw new TypExc("ERROR: en operación aritmética Suma (+)");
         }
     }
 

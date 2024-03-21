@@ -3,6 +3,7 @@
 
 cd java
 javac -d ../class Errors/*.java
+javac -d ../class Compiler/*.java
 javac -d ../class AST/*.java
 cd Parser
 java -jar ../../class/java-cup-11b.jar parser

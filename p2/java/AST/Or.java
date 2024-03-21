@@ -13,13 +13,9 @@ package AST;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
-//we need to import Compiler and Errors to use Typ and TypExc
 import Compiler.Typ;
 import Errors.CompilerExc;
 import Errors.TypExc;
-// these would be  equivalent imports
-// import Compiler.*;
-// import Errors.*;
 
 public class Or implements Exp {
     public final Exp exp1;

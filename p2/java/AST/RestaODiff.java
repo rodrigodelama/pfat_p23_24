@@ -13,13 +13,9 @@ package AST;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
-//we need to import Compiler and Errors to use Typ and TypExc
 import Compiler.Typ;
 import Errors.CompilerExc;
 import Errors.TypExc;
-// these would be  equivalent imports
-// import Compiler.*;
-// import Errors.*;
 
 public class RestaODiff implements Exp {
     public final Exp exp1;
@@ -38,7 +34,7 @@ public class RestaODiff implements Exp {
         if((ct1 == Typ.t_int) && (ct2 == Typ.t_int)) {
             return Typ.t_int;
         } else {
-            throw new TypExc("ERROR: en RestaODiff (-)");
+            throw new TypExc("ERROR: en operación aritmética RestaODiff (-)");
         }
     }
 
