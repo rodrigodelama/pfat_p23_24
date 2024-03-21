@@ -1,6 +1,6 @@
 # When Main.class is created, you can run the program with the following command:
-# From the class directory, run the following command:
-# pfat_p23_24/p1/class/
+# From the pX class directory, run the following command:
+# pfat_p23_24/pX/class/
 
 java -cp ".;java-cup-11b-runtime.jar" Main ../ejemplos/Ejem1/ejem1.prg
 java -cp ".;java-cup-11b-runtime.jar" Main ../ejemplos/Ejem2/ejem2.prg

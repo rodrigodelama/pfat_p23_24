@@ -1,5 +1,5 @@
 # pfat_p23_24
-# From root directory of the project run the following commands:
+# From the pX directory you desire run the following commands:
 
 cd java
 javac -d ../class Errors/*.java
@@ -25,11 +25,10 @@ rm Main.java
 # Now you can run the program with the following command:
 java -cp ".;java-cup-11b-runtime.jar" Main filename.prg
 
-# More examples in the testing.sh file
-
+# Examples ready to run in the testing.sh file
 
 # To clean up after execution (for next compilation)
-rm AST
-rm Errors
-rm Parser
-rm *.java
+# rm AST
+# rm Errors
+# rm Parser
+# rm *.java

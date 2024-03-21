@@ -1,43 +1,52 @@
+/*
+ * Procesamiento de Formatos en Aplicaciones Telemáticas
+ * Práctica 2
+ * 
+ * Rodrigo De Lama Fernández - 100451775
+ * Isabel Schweim - 100460211
+ * 
+ * SymbolTable.java
+ */
+
 package Compiler;
 
 import java.util.Vector;
 
-import Errors.VarDefTwiceExc;
 import Errors.VarNotDefExc;
+import Errors.VarDefTwiceExc;
 
 public class SymbolTable {
     private static Vector<TableEntry> table = new Vector<TableEntry>();
 
     public static void newEntry(String name, int type) throws VarDefTwiceExc {
-        TableEntry e = search(name);
-        if(e == null) {
-            e = new TableEntry(name, type);
-            table.add(e);
+        TableEntry entry = search(name);
+        if(entry == null) {
+            entry = new TableEntry(name, type);
+            table.add(entry);
         } else {
             throw new VarDefTwiceExc(name);
         }
     }
 
-    public static int getType (String name) throws VarNotDefExc {
-        TableEntry e = search(name);
-        
-        if(e == null) {
+    public static int getType(String name) throws VarNotDefExc {
+        TableEntry entry = search(name);
+        if(entry == null) {
             throw new VarNotDefExc(name);
         }
-        return(e.getType());
+        return(entry.getType());
     }
 
-    private static TableEntry search (String name) {
-        TableEntry e = null;
+    private static TableEntry search(String name) {
+        TableEntry entry = null;
         int i = 0;
         while(i < table.size()) {            
-            e = table.get(i);
-            if(e.getName().equals(name)) {
+            entry = table.get(i);
+            if(entry.getName().equals(name)) {
                 break;
             }
-            e = null;
+            entry = null;
             i++;
         }
-        return e;
+        return entry;
     }
 }
