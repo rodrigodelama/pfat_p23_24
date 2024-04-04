@@ -24,11 +24,11 @@ public class StatementList2 implements StatementList {
     }
 
     public int computeStTyp() throws CompilerExc {
-        int type1, type2;
-        type1 = statement.computeStTyp();
-        type2 = statementlist.computeStTyp();
+        int st1, st2;
+        st1 = statement.computeStTyp();
+        st2 = statementlist.computeStTyp();
 
-        if((type1 == Typ.t_void) && (type2 == Typ.t_void)) {
+        if((st1 == Typ.t_void) && (st2 == Typ.t_void)) {
             return Typ.t_void;
         } else {
             throw new TypExc("ERROR: en StatementList2");

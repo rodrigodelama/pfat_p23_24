@@ -19,6 +19,8 @@ public class ConjuntoVacio implements Exp {
     }
 
     // BRAC KET
+    // or
+    // EMPTYSET
     public int computeTyp() throws CompilerExc {
         return Typ.t_intset;
     }

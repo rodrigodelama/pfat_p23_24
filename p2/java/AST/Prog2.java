@@ -22,6 +22,7 @@ public class Prog2 implements Prog {
     }
 
     public void computeAH1() throws CompilerExc {
+        // nothing to do here
     }
 
     public void computeTyp() throws CompilerExc {

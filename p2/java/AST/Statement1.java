@@ -32,7 +32,7 @@ public class Statement1 implements Statement {
         if(st1 == st2) {
             return Typ.t_void;
         } else {
-            throw new TypExc("ERROR: en Statement1");
+            throw new TypExc("ERROR: en Statement1 (asignación incorrecta de valor para dicho tipo)");
         } 
     }
 }

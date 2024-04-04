@@ -31,7 +31,7 @@ public class Statement5 implements Statement {
         if((st1 == Typ.t_bool) && (st2 == Typ.t_void)) {
             return Typ.t_void;
         } else {
-            throw new TypExc("ERROR: en Statement5");
+            throw new TypExc("ERROR: en Statement5 (error en  WHILE <Exp> DO <StatementList>)");
         } 
     }
 }

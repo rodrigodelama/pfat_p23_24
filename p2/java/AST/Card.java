@@ -21,7 +21,6 @@ public class Card implements Exp {
         this.exp = exp;
     }
 
-    // The cardinal operator returns the number of elements in a set
     public int computeTyp() throws CompilerExc {
         int ct;
         ct = exp.computeTyp();
