@@ -10,9 +10,6 @@
 
 package AST;
 
-import java.io.BufferedWriter;
-import java.io.IOException;
-
 import Compiler.Typ;
 import Errors.CompilerExc;
 import Errors.TypExc;
@@ -33,10 +30,5 @@ public class Opuesto implements Exp {
         } else {
             throw new TypExc("ERROR: en operación aritmética OPUESTO (-)");
         }
-    }
-
-    public void generateCode(BufferedWriter w) throws IOException {
-        w.write(" -");
-        exp.generateCode(w); 
     }
 }

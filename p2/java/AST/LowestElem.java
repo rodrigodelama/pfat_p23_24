@@ -9,9 +9,6 @@
 
 package AST;
 
-import java.io.BufferedWriter;
-import java.io.IOException;
-
 import Compiler.Typ;
 import Errors.CompilerExc;
 import Errors.TypExc;
@@ -33,40 +30,4 @@ public class LowestElem implements Exp {
             throw new TypExc("ERROR: en LowestElem");
         }
     }
-
-    public void generateCode(BufferedWriter w) throws IOException {
-    /*
-        // Method to find the lowest element of an integer array
-        public static int findMin(int[] array) {
-            if (array == null || array.length == 0) {
-                throw new IllegalArgumentException("Array must not be empty or null");
-            }
-
-            int min = array[0]; // Assume the first element is the minimum
-
-            // Iterate through the array to find the actual minimum
-            for (int i = 1; i < array.length; i++) {
-                if (array[i] < min) {
-                    min = array[i]; // Update min if current element is smaller
-                }
-            }
-
-            return min;
-        }
-     */
-        w.write("int[] array = ");
-        exp.generateCode(w);
-        w.write(";\n");
-        w.write("if (array == null || array.length == 0) {\n");
-        w.write("    throw new IllegalArgumentException(\"Array must not be empty or null\");\n");
-        w.write("}\n");
-        w.write("int min = array[0];\n");
-        w.write("for (int i = 1; i < array.length; i++) {\n");
-        w.write("    if (array[i] < min) {\n");
-        w.write("        min = array[i];\n");
-        w.write("    }\n");
-        w.write("}\n");
-        w.write("int lowestElem = min;\n");
-    }
-    
 }

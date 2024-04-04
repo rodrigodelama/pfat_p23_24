@@ -10,9 +10,6 @@
 
 package AST;
 
-import java.io.BufferedWriter;
-import java.io.IOException;
-
 import Compiler.Typ;
 import Errors.CompilerExc;
 import Errors.TypExc;
@@ -29,13 +26,9 @@ public class ExpList1 implements ExpList, Exp {
         ct = exp.computeTyp();
 
         if (ct == Typ.t_int) {
-            return Typ.t_int;
+            return Typ.t_void;
         } else {
             throw new TypExc("ERROR: en ExpList1");
         }
-    }
-
-    public void generateCode(BufferedWriter w) throws IOException {
-        exp.generateCode(w);
     }
 }

@@ -1,6 +1,6 @@
 /*
  * Procesamiento de Formatos en Aplicaciones Telemáticas
- * Práctica 2
+ * Práctica 3
  * 
  * Rodrigo De Lama Fernández - 100451775
  * Isabel Schweim - 100460211
@@ -23,6 +23,10 @@ public class Main
     java_cup.runtime.Symbol sroot;
     boolean error=false;
 
+    // Added new code for p2
+    Prog raiz = null;
+    // End of new code for p2
+
     //El primer parametro es el nombre del fichero con el programa
     if (args.length < 1) {
       System.out.println(
@@ -41,7 +45,7 @@ public class Main
           System.out.println("Analisis lexico y sintactico correctos");
           
           // Added new code for p2
-          Prog raiz = (Prog) sroot.value;
+          raiz = (Prog) sroot.value;
           raiz.computeAH1();
           raiz.computeTyp();
           System.out.println("Analisis Semantico correcto");

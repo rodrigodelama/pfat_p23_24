@@ -10,9 +10,6 @@
 
 package AST;
 
-import java.io.BufferedWriter;
-import java.io.IOException;
-
 import Compiler.Typ;
 import Errors.CompilerExc;
 import Errors.TypExc;
@@ -32,10 +29,5 @@ public class Not implements Exp {
         } else {
             throw new TypExc("ERROR: en operación lógica NOT (!)");
         }
-    }
-
-    public void generateCode(BufferedWriter w) throws IOException {
-        w.write(" !");
-        exp.generateCode(w); 
     }
 }

@@ -10,9 +10,6 @@
 
 package AST;
 
-import java.io.BufferedWriter;
-import java.io.IOException;
-
 import Compiler.Typ;
 import Errors.CompilerExc;
 import Errors.TypExc;
@@ -27,21 +24,14 @@ public class Igual implements Exp {
     }
 
     public int computeTyp() throws CompilerExc {
-        int ct1, ct2;
-        ct1 = exp1.computeTyp();
-        ct2 = exp2.computeTyp();
+        int type1, type2;
+        type1 = exp1.computeTyp();
+        type2 = exp2.computeTyp();
 
-        //TODO: ct1 will equal a string
-        if((ct1 == Typ.t_int) && (ct2 == Typ.t_int)) {
-            return Typ.t_bool; // either true or false
+        if(type1 == type2) {
+            return Typ.t_bool;
         } else {
             throw new TypExc("ERROR: en operación aritmética Divison (/)");
         }
-    }
-
-    public void generateCode(BufferedWriter w) throws IOException {
-        exp1.generateCode(w);
-        w.write(" = "); //this is just an assignment
-        exp2.generateCode(w); 
     }
 }

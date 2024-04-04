@@ -10,7 +10,9 @@
 
 package AST;
 
+import Errors.CompilerExc;
+
 public interface Prog {
-    public void computeAH1();
-    public void computeTyp();
+    public void computeAH1() throws CompilerExc;
+    public void computeTyp() throws CompilerExc;
 }

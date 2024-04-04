@@ -12,7 +12,10 @@ cd ../../class/
 javac -cp .:java-cup-11b-runtime.jar -d . *.java
 rm *.java
 cd ../java
-javac -d ../class JLex/*.java
+# javac -d ../class JLex/*.java
+# this command will output errors, but it's ok because we are only interested in the generated file
+# we will use the command below to compile the generated file and ignore the errors
+javac -d ../class JLex/*.java 2>/dev/null
 cd Lexer
 java -cp ../../class JLex.Main Yylex
 mv Yylex.java ../../class/Yylex.java
@@ -20,7 +23,7 @@ cd ../../class/
 javac -cp .:java-cup-11b-runtime.jar -d . Yylex.java
 rm Yylex.java
 cp ../java/Main.java ../class/Main.java
-javac -cp .:java-cup-11b-runtime.jar -d . Main.java
+javac -cp .:java-cup-11b-runtime.jar -d . Main.java 2>/dev/null
 rm Main.java
 
 # Now you can run the program with the following command:

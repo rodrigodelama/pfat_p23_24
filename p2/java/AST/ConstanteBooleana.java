@@ -10,9 +10,6 @@
 
 package AST;
 
-import java.io.BufferedWriter;
-import java.io.IOException;
-
 import Compiler.Typ;
 import Errors.CompilerExc;
 
@@ -25,9 +22,5 @@ public class ConstanteBooleana implements Exp {
 
     public int computeTyp() throws CompilerExc {
         return Typ.t_bool;
-    }
-
-    public void generateCode(BufferedWriter w) throws IOException {
-        w.write("" + bool);
     }
 }

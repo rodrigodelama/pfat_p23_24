@@ -10,11 +10,9 @@
 
 package AST;
 
-import java.io.BufferedWriter;
-import java.io.IOException;
-
 import Compiler.Typ;
 import Errors.CompilerExc;
+import Errors.TypExc;
 
 public class Conjunto implements Exp {
     public final ExpList expList;
@@ -23,14 +21,15 @@ public class Conjunto implements Exp {
         this.expList = expList;
     }
 
-    // i dont think we need to compute type here
+    // BRAC <ExpList> KET
     public int computeTyp() throws CompilerExc {
-        return Typ.t_intset;
-    }
+        int type;
+        type = expList.computeTyp();
 
-    public void generateCode(BufferedWriter w) throws IOException {
-        System.out.print("{ ");
-        expList.generateCode(w);
-        System.out.print(" }");
+        if (type == Typ.t_void) {
+            return Typ.t_intset;
+        } else {
+            throw new TypExc("ERROR: en Conjunto");
+        }
     }
 }

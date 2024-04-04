@@ -10,12 +10,8 @@
 
 package AST;
 
-import java.io.BufferedWriter;
-import java.io.IOException;
-
 import Errors.CompilerExc;
 
 public interface Exp {
     public int computeTyp() throws CompilerExc;
-    public void generateCode(BufferedWriter w) throws IOException;
 }

@@ -10,6 +10,8 @@
 
 package AST;
 
-public interface StatementList {
+import Errors.CompilerExc;
 
+public interface StatementList {
+    public int computeStTyp() throws CompilerExc;
 }

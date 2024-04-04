@@ -10,13 +10,14 @@
 
 package AST;
 
-import java.io.BufferedWriter;
-
 import Errors.CompilerExc;
 
 public interface IdentList {
     // added from last year's code
     public void computeAH1(int t) throws CompilerExc;
     public int getAH1();
-    public void generateCode(BufferedWriter w, String tabs);
+
+    public void computeIndex(int args) throws CompilerExc;
+    public int getIndex();
+    public int getArgsLength();
 }

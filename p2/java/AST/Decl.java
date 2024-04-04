@@ -10,9 +10,6 @@
 
 package AST;
 
-import java.io.BufferedWriter;
-import java.io.IOException;
-
 import Errors.CompilerExc;
 
 public class Decl {
@@ -28,26 +25,4 @@ public class Decl {
         int ah1 = this.type;
         identlist.computeAH1(ah1);
     }
-
-    public void generateCode(BufferedWriter w, String tabs) throws IOException {
-        String type_str = "";
-        switch (type) {
-            case 1:
-                type_str = "int";
-                break;
-            case 2:
-                type_str = "boolean";
-                break;
-            case 3:
-                type_str = "intset";
-                break;
-            default:
-                break;
-        }
-        w.write(tabs + type_str + " ");
-        identlist.generateCode(w, tabs);
-        w.write(";");
-        w.newLine();
-    }
-
 }
