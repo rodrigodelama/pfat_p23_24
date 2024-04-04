@@ -9,7 +9,7 @@ int i, sig;
 
 begin
 a:= {0, 1, 3, 5, -2, 7, 9, 4};
-b:= {0, -2, 4, -6, true, 10};
+b:= {0, -2, 4, -6, true77, 10};
 c:= a union b;
 d:= a intersec b;
 e:= a - b;
