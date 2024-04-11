@@ -10,6 +10,11 @@
 
 package AST;
 
-public interface Statement {
+import java.io.BufferedWriter;
+import java.io.IOException;
 
+import Errors.CompilerExc;
+
+public interface Statement {
+    public int computeStTyp() throws CompilerExc;
 }

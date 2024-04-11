@@ -10,10 +10,16 @@
 
 package AST;
 
+import Errors.CompilerExc;
+
 public class LDecl1 implements LDecl {
     public final Decl decl;
 
     public LDecl1(Decl decl) {
         this.decl = decl;
+    }
+
+    public void computeAH1() throws CompilerExc {
+        decl.computeAH1();
     }
 }

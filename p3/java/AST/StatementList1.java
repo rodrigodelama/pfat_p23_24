@@ -10,10 +10,16 @@
 
 package AST;
 
+import Errors.CompilerExc;
+
 public class StatementList1 implements StatementList {
     public final Statement statement;
 
     public StatementList1(Statement statement) {
         this.statement = statement;
+    }
+
+    public int computeStTyp() throws CompilerExc {
+        return statement.computeStTyp();
     }
 }

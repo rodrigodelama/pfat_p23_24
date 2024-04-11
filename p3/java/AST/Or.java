@@ -27,11 +27,11 @@ public class Or implements Exp {
     }
 
     public int computeTyp() throws CompilerExc {
-        int ct1, ct2;
-        ct1 = exp1.computeTyp();
-        ct2 = exp2.computeTyp();
+        int type1, type2;
+        type1 = exp1.computeTyp();
+        type2 = exp2.computeTyp();
 
-        if((ct1 == Typ.t_bool) && (ct2 == Typ.t_bool)) {
+        if((type1 == Typ.t_bool) && (type2 == Typ.t_bool)) {
             return Typ.t_bool;
         } else {
             throw new TypExc("ERROR: en operación lógica OR (||)");

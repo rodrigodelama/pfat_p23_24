@@ -1,6 +1,6 @@
 /*
  * Procesamiento de Formatos en Aplicaciones Telemáticas
- * Práctica 2
+ * Práctica 3
  * 
  * Rodrigo De Lama Fernández - 100451775
  * Isabel Schweim - 100460211
@@ -35,6 +35,7 @@ public class LowestElem implements Exp {
     }
 
     public void generateCode(BufferedWriter w) throws IOException {
+        //FIXME: review GenCode for finding the lowest element of an integer array
     /*
         // Method to find the lowest element of an integer array
         public static int findMin(int[] array) {

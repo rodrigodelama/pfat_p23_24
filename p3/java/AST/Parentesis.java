@@ -22,7 +22,6 @@ public class Parentesis implements Exp {
         this.exp = exp;
     }
 
-    //<Exp>.typ= <Exp>1.typ
     public int computeTyp() throws CompilerExc {
         return exp.computeTyp();
     }

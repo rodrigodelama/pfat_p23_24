@@ -10,6 +10,8 @@
 
 package AST;
 
-public interface LDecl {
+import Errors.CompilerExc;
 
+public interface LDecl {
+    public void computeAH1() throws CompilerExc;
 }

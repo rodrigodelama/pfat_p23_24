@@ -18,15 +18,18 @@ import Errors.CompilerExc;
 
 public class ConjuntoVacio implements Exp {
     public ConjuntoVacio() {
+        // EMPTY
     }
 
-    //maybe intset ??
+    // BRAC KET
+    // or
+    // EMPTYSET
     public int computeTyp() throws CompilerExc {
         return Typ.t_intset;
     }
 
     public void generateCode(BufferedWriter w) throws IOException {
-        w.write("{ }");
+        // w.write("{ }");
     }
 
 }

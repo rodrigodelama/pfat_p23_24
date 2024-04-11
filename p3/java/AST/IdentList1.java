@@ -12,27 +12,24 @@ package AST;
 
 import java.io.BufferedWriter;
 
+import Compiler.SymbolTable;
 import Errors.CompilerExc;
 
 public class IdentList1 implements IdentList {
     public final String identifier;
+    private int ah1;
 
     public IdentList1(String identifier) {
         this.identifier = identifier;
     }
 
-    public void computeAH1(int t) throws CompilerExc {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'computeAH1'");
-    }
-
-    public int getAH1() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getAH1'");
+    public void computeAH1(int type) throws CompilerExc {
+        this.ah1 = type;
+        SymbolTable.newEntry(this.identifier, this.ah1);
     }
 
     public void generateCode(BufferedWriter w, String tabs) {
-        // TODO Auto-generated method stub
+        //TODO: Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'generateCode'");
     }
 }

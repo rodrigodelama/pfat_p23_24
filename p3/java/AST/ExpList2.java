@@ -27,18 +27,19 @@ public class ExpList2 implements ExpList, Exp {
     }
 
     public int computeTyp() throws CompilerExc {
-        int ct1, ct2;
-        ct1 = exp.computeTyp();
-        ct2 = explist.computeTyp();
+        int type1, type2;
+        type1 = exp.computeTyp();
+        type2 = explist.computeTyp();
 
-        if ((ct1 == Typ.t_int) && (ct2 == Typ.t_intset)) {
-            return Typ.t_intset;
+        if ((type1 == Typ.t_int) && (type2 == Typ.t_void)) {
+            return Typ.t_void;
         } else {
-            throw new TypExc("ERROR: en ExpList2");
+            throw new TypExc("ERROR: en ExpList2 se esperaba un tipo " + Typ.t_int + " pero se ha encontrado un tipo " + type1);
         }
     }
 
     public void generateCode(BufferedWriter w) throws IOException {
+        //FIXME: review GenCode for an expression list
         exp.generateCode(w);
         w.write(", ");
         explist.generateCode(w);

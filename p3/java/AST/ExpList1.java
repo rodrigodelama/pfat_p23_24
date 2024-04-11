@@ -29,13 +29,15 @@ public class ExpList1 implements ExpList, Exp {
         ct = exp.computeTyp();
 
         if (ct == Typ.t_int) {
-            return Typ.t_int;
+            return Typ.t_void;
         } else {
-            throw new TypExc("ERROR: en ExpList1");
+            throw new TypExc("ERROR: en ExpList1: se esperaba un tipo " + Typ.t_int + " pero se ha encontrado un tipo " + ct);
         }
     }
 
     public void generateCode(BufferedWriter w) throws IOException {
+        //FIXME:
+        // review GenCode for an expression list
         exp.generateCode(w);
     }
 }

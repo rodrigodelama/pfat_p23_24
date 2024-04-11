@@ -10,6 +10,8 @@
 
 package AST;
 
+import Errors.CompilerExc;
+
 public class Prog2 implements Prog {
     public final String identifier;
     public final Body body;
@@ -19,13 +21,11 @@ public class Prog2 implements Prog {
         this.body = body;
     }
 
-    public void computeAH1() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'computeAH1'");
+    public void computeAH1() throws CompilerExc {
+        // para propagarlo
     }
 
-    public void computeTyp() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'computeTyp'");
+    public void computeTyp() throws CompilerExc {
+        body.computeStTyp();
     }
 }

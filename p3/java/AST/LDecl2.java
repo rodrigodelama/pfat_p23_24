@@ -10,6 +10,8 @@
 
 package AST;
 
+import Errors.CompilerExc;
+
 public class LDecl2 implements LDecl {
     public final Decl decl;
     public final LDecl ldecl;
@@ -17,5 +19,10 @@ public class LDecl2 implements LDecl {
     public LDecl2(Decl decl, LDecl ldecl) {
         this.decl = decl;
         this.ldecl = ldecl;
+    }
+
+    public void computeAH1() throws CompilerExc {
+        decl.computeAH1();
+        ldecl.computeAH1();
     }
 }

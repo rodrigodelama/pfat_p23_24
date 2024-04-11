@@ -27,11 +27,11 @@ public class Interseccion implements Exp {
     }
 
     public int computeTyp() throws CompilerExc {
-        int ct1, ct2;
-        ct1 = exp1.computeTyp();
-        ct2 = exp2.computeTyp();
+        int type1, type2;
+        type1 = exp1.computeTyp();
+        type2 = exp2.computeTyp();
 
-        if ((ct1 == Typ.t_intset) && (ct2 == Typ.t_intset)) {
+        if ((type1 == Typ.t_intset) && (type2 == Typ.t_intset)) {
             return Typ.t_intset;
         } else {
             throw new TypExc("ERROR: en Interseccion");
@@ -39,6 +39,7 @@ public class Interseccion implements Exp {
     }
 
     public void generateCode(BufferedWriter w) throws IOException {
+        //FIXME: check if this is correct
         /*
             // Method to find the intersection of two arrays
             public static int[] findIntersection(int[] array1, int[] array2) {
