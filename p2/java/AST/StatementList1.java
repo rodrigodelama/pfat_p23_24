@@ -18,6 +18,7 @@ public class StatementList1 implements StatementList {
     public StatementList1(Statement statement) {
         this.statement = statement;
     }
+
     public int computeStTyp() throws CompilerExc {
         return statement.computeStTyp();
     }

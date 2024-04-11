@@ -14,47 +14,43 @@ import java.io.*;
 
 import AST.Prog;
 
-public class Main
-{
-  public static void main(String args[]) throws Exception{
-    java.io.BufferedReader in;
-    Yylex sc;
-    parser p;
-    java_cup.runtime.Symbol sroot;
-    boolean error=false;
+public class Main {
+    public static void main(String args[]) throws Exception {
+        java.io.BufferedReader in;
+        Yylex sc;
+        parser p;
+        java_cup.runtime.Symbol sroot;
+        boolean error = false;
 
-    // Added new code for p2
-    Prog raiz = null;
-    // End of new code for p2
+        // p2 - Analisis semantico
+        Prog raiz = null;
 
-    //El primer parametro es el nombre del fichero con el programa
-    if (args.length < 1) {
-      System.out.println(
-        "Uso: java Main <nombre_fichero>");
-      error=true;
+        // El primer parametro es el nombre del fichero con el programa
+        if (args.length < 1) {
+            System.out.println("Uso: java Main <nombre_fichero>");
+            error = true;
+        }
+
+        // Analisis lexico y sintactico
+        if (!error) {  
+            try {
+                in = new java.io.BufferedReader(new java.io.FileReader(args[0]));
+                sc = new Yylex(in);
+                p = new parser(sc); 
+
+                // p1 - Analisis lexico y sintactico
+                sroot = p.parse();
+                System.out.println("Analisis lexico y sintactico correctos");
+
+                // p2 - Analisis semantico
+                raiz = (Prog) sroot.value;
+                raiz.computeAH1();
+                raiz.computeTyp();
+                System.out.println("Analisis Semantico correcto");
+            } catch(IOException e) {
+                System.out.println("Error abriendo fichero: " + args[0]);
+                error = true;
+            }
+        }
     }
-
-    //Analisis lexico y sintactico
-
-    if (!error) {  
-      try {
-          in = new java.io.BufferedReader(new java.io.FileReader(args[0]));
-          sc = new Yylex(in);
-          p = new parser(sc); 
-          sroot = p.parse(); //p.parser realiza el analisis sintactico
-          System.out.println("Analisis lexico y sintactico correctos");
-          
-          // Added new code for p2
-          raiz = (Prog) sroot.value;
-          raiz.computeAH1();
-          raiz.computeTyp();
-          System.out.println("Analisis Semantico correcto");
-          // End of new code for p2
-          
-      } catch(IOException e) {
-          System.out.println("Error abriendo fichero: " + args[0]);
-          error= true;
-      }
-    }
-  }
 }

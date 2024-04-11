@@ -31,7 +31,7 @@ public class Igual implements Exp {
         if(type1 == type2) {
             return Typ.t_bool;
         } else {
-            throw new TypExc("ERROR: en Igual");
+            throw new TypExc("ERROR: en Igual (asignación)");
         }
     }
 }

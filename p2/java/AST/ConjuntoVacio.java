@@ -15,7 +15,7 @@ import Errors.CompilerExc;
 
 public class ConjuntoVacio implements Exp {
     public ConjuntoVacio() {
-
+        // EMPTY
     }
 
     // BRAC KET

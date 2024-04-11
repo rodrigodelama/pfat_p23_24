@@ -20,6 +20,7 @@ public class SymbolTable {
 
     public static void newEntry(String name, int type) throws VarDefTwiceExc {
         TableEntry entry = search(name);
+
         if(entry == null) {
             entry = new TableEntry(name, type);
             table.add(entry);
@@ -30,6 +31,7 @@ public class SymbolTable {
 
     public static int getType(String name) throws VarNotDefExc {
         TableEntry entry = search(name);
+
         if(entry == null) {
             throw new VarNotDefExc(name);
         }
@@ -39,6 +41,7 @@ public class SymbolTable {
     private static TableEntry search(String name) {
         TableEntry entry = null;
         int i = 0;
+
         while(i < table.size()) {            
             entry = table.get(i);
             if(entry.getName().equals(name)) {

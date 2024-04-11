@@ -28,7 +28,7 @@ public class ExpList1 implements ExpList, Exp {
         if (ct == Typ.t_int) {
             return Typ.t_void;
         } else {
-            throw new TypExc("ERROR: en ExpList1");
+            throw new TypExc("ERROR: en ExpList1: se esperaba un tipo " + Typ.t_int + " pero se ha encontrado un tipo " + ct);
         }
     }
 }

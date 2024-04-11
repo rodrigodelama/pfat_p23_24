@@ -32,7 +32,7 @@ public class In implements Exp {
         if( ((type1 == Typ.t_int) && (type2 == Typ.t_intset)) ) {
             return Typ.t_bool;
         } else {
-            throw new TypExc("ERROR: en In");
+            throw new TypExc("ERROR: en In (comprobación de pertenencia a un conjunto)");
         }
     }
 }

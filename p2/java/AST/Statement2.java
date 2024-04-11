@@ -29,7 +29,7 @@ public class Statement2 implements Statement {
         if(st1 == Typ.t_int) {
             return Typ.t_void;
         } else {
-            throw new TypExc("ERROR: en Statement2 (symbol is not an integer)");
+            throw new TypExc("ERROR: en Statement2 (no es un entero)");
         } 
     }
 }

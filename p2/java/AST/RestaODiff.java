@@ -33,7 +33,7 @@ public class RestaODiff implements Exp {
         } else if((type1 == Typ.t_intset) && (type2 == Typ.t_intset)) {
             return Typ.t_intset;
         } else {
-            throw new TypExc("ERROR: en operación aritmética RestaODiff (-)");
+            throw new TypExc("ERROR: en operación Resta ó Diferencia de Conjuntos (-)");
         }
     }
 }

@@ -13,11 +13,5 @@ package AST;
 import Errors.CompilerExc;
 
 public interface IdentList {
-    // added from last year's code
     public void computeAH1(int type) throws CompilerExc;
-    public int getAH1();
-
-    public void computeIndex(int args) throws CompilerExc;
-    public int getIndex();
-    public int getArgsLength();
 }

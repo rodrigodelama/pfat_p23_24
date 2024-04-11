@@ -21,6 +21,6 @@ public class Variable implements Exp {
     }
 
     public int computeTyp() throws CompilerExc {
-        return SymbolTable.getType(this.identifier); //si no lanza la excepcion, entonces devuelve el numero del tipo
+        return SymbolTable.getType(this.identifier); //si no lanza la excepcion, devuelve el numero del tipo
     }
 }

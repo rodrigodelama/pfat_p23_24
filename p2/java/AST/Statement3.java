@@ -29,7 +29,7 @@ public class Statement3 implements Statement {
         if(st1 == Typ.t_bool) {
             return Typ.t_void;
         } else {
-            throw new TypExc("ERROR: en Statement3 (symbol is not a boolean)");
+            throw new TypExc("ERROR: en Statement3 (no es un booleano)");
         } 
     }
 }

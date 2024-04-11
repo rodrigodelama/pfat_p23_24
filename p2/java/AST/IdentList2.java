@@ -17,8 +17,6 @@ public class IdentList2 implements IdentList {
     public final String identifier;
     public final IdentList identlist;
     private int ah1;
-    private int index;
-    private int args_length;
 
     public IdentList2(String identifier, IdentList identlist) {
         this.identifier = identifier;
@@ -30,23 +28,5 @@ public class IdentList2 implements IdentList {
 
         identlist.computeAH1(type);
         SymbolTable.newEntry(identifier, ah1);
-    }
-
-    public int getAH1() {
-        return ah1;
-    }
-
-    public void computeIndex(int args) throws CompilerExc {
-        index = args;
-        identlist.computeIndex(index + 1);
-    }
-
-    public int getIndex() {
-        return index;
-    }
-
-    public int getArgsLength() {
-        args_length = identlist.getArgsLength();
-        return args_length;
     }
 }

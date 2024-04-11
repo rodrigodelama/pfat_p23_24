@@ -31,7 +31,7 @@ public class ExpList2 implements ExpList, Exp {
         if ((type1 == Typ.t_int) && (type2 == Typ.t_void)) {
             return Typ.t_void;
         } else {
-            throw new TypExc("ERROR: en ExpList2");
+            throw new TypExc("ERROR: en ExpList2 se esperaba un tipo " + Typ.t_int + " pero se ha encontrado un tipo " + type1);
         }
     }
 }

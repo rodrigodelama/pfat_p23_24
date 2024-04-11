@@ -31,7 +31,7 @@ public class Union implements Exp {
         if ((type1 == Typ.t_intset) && (type2 == Typ.t_intset)) {
             return Typ.t_intset;
         } else {
-            throw new TypExc("ERROR: en Union");
+            throw new TypExc("ERROR: en Union de Conjuntos");
         }
     }
 }
