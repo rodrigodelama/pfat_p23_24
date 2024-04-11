@@ -9,6 +9,6 @@ begin
 a:=true;
 b:=false;
 
-c:= true
+c:= true;
 printBool(b);
 end;
