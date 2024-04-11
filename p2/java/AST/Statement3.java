@@ -22,7 +22,7 @@ public class Statement3 implements Statement {
         this.identifier = identifier;
     }
 
-        public int computeStTyp() throws CompilerExc {
+    public int computeStTyp() throws CompilerExc {
         int st1;
         st1 = SymbolTable.getType(identifier);
         
