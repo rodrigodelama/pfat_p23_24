@@ -24,7 +24,7 @@ public class Statement1 implements Statement {
         this.exp = exp;
     }
 
-        public int computeStTyp() throws CompilerExc {
+    public int computeStTyp() throws CompilerExc {
         int st1, st2;
         st1 = SymbolTable.getType(identifier);
         st2 = exp.computeTyp();

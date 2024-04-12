@@ -41,6 +41,9 @@ public class Decl {
             case 3:
                 type_str = "intset";
                 break;
+            // case 4:
+            //     type_str = "void";
+            //     break;
             default:
                 break;
         }

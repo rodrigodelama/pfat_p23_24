@@ -34,7 +34,7 @@ public class Interseccion implements Exp {
         if ((type1 == Typ.t_intset) && (type2 == Typ.t_intset)) {
             return Typ.t_intset;
         } else {
-            throw new TypExc("ERROR: en Interseccion");
+            throw new TypExc("ERROR: en Interseccion de Conjuntos");
         }
     }
 
@@ -97,5 +97,4 @@ public class Interseccion implements Exp {
         w.newLine();
         w.write("int[] interseccion = trimmedArray;");
     }
-    
 }

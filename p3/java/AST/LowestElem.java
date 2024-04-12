@@ -30,7 +30,7 @@ public class LowestElem implements Exp {
         if (ct == Typ.t_intset) {
             return Typ.t_int;
         } else {
-            throw new TypExc("ERROR: en LowestElem");
+            throw new TypExc("ERROR: en LowestElem de un Conjunto");
         }
     }
 

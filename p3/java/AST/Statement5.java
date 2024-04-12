@@ -23,7 +23,7 @@ public class Statement5 implements Statement {
         this.statementList = statementList;
     }
 
-        public int computeStTyp() throws CompilerExc {
+    public int computeStTyp() throws CompilerExc {
         int st1, st2;
         st1 = exp.computeTyp();
         st2 = statementList.computeStTyp();

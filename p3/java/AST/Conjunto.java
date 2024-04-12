@@ -26,7 +26,14 @@ public class Conjunto implements Exp {
 
     // BRAC <ExpList> KET
     public int computeTyp() throws CompilerExc {
-        return Typ.t_intset;
+        int type;
+        type = expList.computeTyp();
+
+        if (type == Typ.t_void) {
+            return Typ.t_intset;
+        } else {
+            throw new TypExc("ERROR: en Conjunto");
+        }
     }
 
     public void generateCode(BufferedWriter w) throws IOException {
