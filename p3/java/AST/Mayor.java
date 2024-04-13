@@ -42,7 +42,7 @@ public class Mayor implements Exp {
         w.write("(");
         exp1.generateCode(w);
         w.write(" > ");
-        exp2.generateCode(w); 
+        exp2.generateCode(w);
         w.write(")");
     }
 }

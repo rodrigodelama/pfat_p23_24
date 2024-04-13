@@ -37,7 +37,7 @@ public class Not implements Exp {
     public void generateCode(BufferedWriter w) throws IOException {
         w.write("(");
         w.write(" !");
-        exp.generateCode(w); 
+        exp.generateCode(w);
         w.write(")");
     }
 }

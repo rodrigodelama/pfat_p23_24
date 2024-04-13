@@ -68,7 +68,7 @@ public abstract class IntSetA {
 		return true;
 	}
 
-    public abstract IntSetA intersectionSet(IntSetA is); 
+    public abstract IntSetA intersectionSet(IntSetA is);
 
     public int card() {
 		return intSetData.size();

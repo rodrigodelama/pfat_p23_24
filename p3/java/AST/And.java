@@ -39,10 +39,10 @@ public class And implements Exp {
     }
 
     public void generateCode(BufferedWriter w) throws IOException {
-        w.write("("); 
+        w.write("(");
         exp1.generateCode(w);
         w.write(" && ");
-        exp2.generateCode(w); 
-        w.write(")"); 
+        exp2.generateCode(w);
+        w.write(")");
     }
 }

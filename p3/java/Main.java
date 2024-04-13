@@ -23,7 +23,7 @@ public class Main {
         boolean error = false;
 
         // p2 - Analisis semantico
-        Prog raiz = null;
+        Prog programa = null;
 
         // El primer parametro es el nombre del fichero con el programa
         if (args.length < 1) {
@@ -36,23 +36,43 @@ public class Main {
             try {
                 in = new java.io.BufferedReader(new java.io.FileReader(args[0]));
                 sc = new Yylex(in);
-                p = new parser(sc); 
+                p = new parser(sc);
 
                 // p1 - Analisis lexico y sintactico
                 sroot = p.parse();
                 System.out.println("Analisis lexico y sintactico correctos");
 
                 // p2 - Analisis semantico
-                raiz = (Prog) sroot.value;
-                raiz.computeAH1();
-                raiz.computeTyp();
+                programa = (Prog) sroot.value;
+                programa.computeAH1();
+                programa.computeTyp();
                 System.out.println("Analisis Semantico correcto");
-                
-                // p3 - Generacion de codigo
-                // raiz.generateCode();
             } catch(IOException e) {
                 System.out.println("Error abriendo fichero: " + args[0]);
                 error = true;
+            }
+        }
+
+        // p3 - Generacion de código
+        if (!error) {
+            try {
+                String nombreFicheroJava = args[1] + ".java";
+                BufferedWriter w = new BufferedWriter(new FileWriter(nombreFicheroJava));
+                w.write("import GeneratedCodeLib.*;");
+                w.newLine();
+                w.newLine();
+                w.write("public class " + args[1] + " {");
+                w.newLine();
+                w.newLine();
+                programa.generateCode(w, "    ");
+                w.newLine();
+                w.write("}");
+                w.newLine();
+                w.close();
+                System.out.println("Codigo generado en fichero " + nombreFicheroJava);
+            } catch(IOException e) {
+                System.out.println("Error abriendo fichero: " + args[1] + ".java");
+                error= true;
             }
         }
     }

@@ -40,7 +40,7 @@ public class Igual implements Exp {
 
     public void generateCode(BufferedWriter w) throws IOException {
         exp1.generateCode(w);
-        w.write(" = "); //this is just an assignment
-        exp2.generateCode(w); 
+        w.write(" = ");
+        exp2.generateCode(w);
     }
 }
