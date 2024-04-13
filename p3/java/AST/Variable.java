@@ -28,6 +28,6 @@ public class Variable implements Exp {
     }
 
     public void generateCode(BufferedWriter w) throws IOException {
-        w.write(id);
+        w.write(identifier);
     }
 }

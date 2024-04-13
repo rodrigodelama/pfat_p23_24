@@ -13,9 +13,9 @@ package AST;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
-import Errors.CompilerExc;
+import Errors.CompilerExc;w
 
 public interface StatementList {
     public int computeStTyp() throws CompilerExc;
-    public void generateCode(BufferedWriter w) throws IOException;
+    public void generateCode(BufferedWriter w, String indent) throws IOException;
 }

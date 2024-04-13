@@ -38,9 +38,9 @@ public class StatementList2 implements StatementList {
         } 
     }
 
-    public void generateCode(BufferedWriter w) throws IOException {
-        statement.generateCode(w);
-        w.write(", ");
-        statementlist.generateCode(w);
+    public void generateCode(BufferedWriter w, String indent) throws IOException {
+        w.write(indent+"    ");
+        statement.generateCode(w, indent);
+        statementlist.generateCode(w, indent);
     }
 }

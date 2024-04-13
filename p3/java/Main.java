@@ -56,11 +56,12 @@ public class Main {
         // p3 - Generacion de código
         if (!error) {
             try {
-                String nombreFicheroJava = args[1] + ".java";
+                String nombreFicheroJava = args[0] + ".java";
                 BufferedWriter w = new BufferedWriter(new FileWriter(nombreFicheroJava));
                 w.write("import GeneratedCodeLib.*;");
                 w.newLine();
-                w.write("public class " + args[1] + " {");
+                w.newLine();
+                w.write("public class " + args[0] + " {");
                 w.newLine();
                 programa.generateCode(w, "    ");
                 w.newLine();
@@ -69,8 +70,8 @@ public class Main {
                 w.close();
                 System.out.println("Codigo generado en fichero " + nombreFicheroJava);
             } catch(IOException e) {
-                System.out.println("Error abriendo fichero: " + args[1] + ".java");
-                error= true;
+                System.out.println("Error abriendo fichero: " + args[0] + ".java");
+                error = true;
             }
         }
     }

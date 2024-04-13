@@ -34,20 +34,24 @@ public class IdentList2 implements IdentList {
     }
 
     public void generateCode(BufferedWriter w, String tabs) {
-        w.write(identifier + " = ");
-        switch (ah1) {
-            case 1:
-                w.write("0");
-                break;
-            case 2:
-                w.write("false");
-                break;
-            case 3:
-                w.write("{}");
-                break;
-            default:
-                break;
+        try {
+            w.write(identifier + " = ");
+            switch (ah1) {
+                case 1:
+                    w.write("0");
+                    break;
+                case 2:
+                    w.write("false");
+                    break;
+                case 3:
+                    w.write("{}");
+                    break;
+                default:
+                    break;
+            }
+            identlist.generateCode(w, tabs);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        lv.generateCode(w, tabs);
     }
 }

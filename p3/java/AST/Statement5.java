@@ -40,11 +40,11 @@ public class Statement5 implements Statement {
 
     //WHILE Exp:e DO StatementList:sl END {:RESULT=new Statement5(e, sl); :}
     //TODO: review
-    public void generateCode(BufferedWriter w) throws IOException {
+    public void generateCode(BufferedWriter w, String indent) throws IOException {
         w.write("while (");
         exp.generateCode(w);
         w.write(") {\n");
-        statementList.generateCode(w);
+        statementList.generateCode(w, indent+"    ");
         w.write("}\n");
     }
 }

@@ -40,11 +40,11 @@ public class Statement4 implements Statement {
 
     //IF Exp:e THEN StatementList:sl END {:RESULT=new Statement4(e, sl); :}
     //TODO: review
-    public void generateCode(BufferedWriter w) throws IOException {
+    public void generateCode(BufferedWriter w, String indent) throws IOException {
         w.write("if (");
         exp.generateCode(w);
         w.write(") {\n");
-        statementList.generateCode(w);
+        statementList.generateCode(w, "    ");
         w.write("}\n");
     }
 }

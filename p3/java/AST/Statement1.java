@@ -41,13 +41,13 @@ public class Statement1 implements Statement {
 
     //IDENT:i ASIG Exp:e {:RESULT=new Statement1(i, e); :}
     //TODO: review
-    public void generateCode(BufferedWriter w) throws CompilerExc {
+    public void generateCode(BufferedWriter w, String indent) throws IOException {
         try {
             w.write(identifier + " = ");
             exp.generateCode(w);
             w.write(";\n");
-        } catch (Exception e) {
-            throw new CompilerExc(e.getMessage());
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

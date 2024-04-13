@@ -38,7 +38,7 @@ public class Statement3 implements Statement {
 
     //PRINT_B PAREN IDENT:i TESIS {:RESULT=new Statement3(i); :}
     //TODO: print the value of the boolean
-    public void generateCode(BufferedWriter w) throws IOException {
+    public void generateCode(BufferedWriter w, String indent) throws IOException {
         // w.write(identifier + " = ");
         // w.write("true");
         
