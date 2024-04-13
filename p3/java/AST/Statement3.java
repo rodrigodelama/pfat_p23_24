@@ -39,9 +39,11 @@ public class Statement3 implements Statement {
     //PRINT_B PAREN IDENT:i TESIS {:RESULT=new Statement3(i); :}
     //TODO: print the value of the boolean
     public void generateCode(BufferedWriter w, String indent) throws IOException {
-        // w.write(identifier + " = ");
-        // w.write("true");
-        
-        // w.write("El valor de la variable x es: " + identifier);
+        try {
+            w.newLine();
+            w.write("System.out.println(\"El valor de la variable \" + " + identifier + " + \" es: \" + (value of identifier)" + ");");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -39,7 +39,7 @@ public class StatementList2 implements StatementList {
     }
 
     public void generateCode(BufferedWriter w, String indent) throws IOException {
-        w.write(indent+"    ");
+        w.write(indent);
         statement.generateCode(w, indent);
         statementlist.generateCode(w, indent);
     }

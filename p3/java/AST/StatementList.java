@@ -13,7 +13,7 @@ package AST;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
-import Errors.CompilerExc;w
+import Errors.CompilerExc;
 
 public interface StatementList {
     public int computeStTyp() throws CompilerExc;

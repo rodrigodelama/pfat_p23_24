@@ -31,20 +31,7 @@ public class IdentList1 implements IdentList {
 
     public void generateCode(BufferedWriter w, String indent) {
         try {
-            w.write(identifier + " = ");
-            switch (ah1) {
-                case 1:
-                    w.write("0");
-                    break;
-                case 2:
-                    w.write("false");
-                    break;
-                case 3:
-                    w.write("{}");
-                    break;
-                default:
-                    break;
-            }
+            w.write(identifier);
         } catch (IOException e) {
             e.printStackTrace();
         }

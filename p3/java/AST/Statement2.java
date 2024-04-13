@@ -40,12 +40,11 @@ public class Statement2 implements Statement {
     //PRINT_I PAREN IDENT:i TESIS {:RESULT=new Statement2(i); :}
     public void generateCode(BufferedWriter w, String indent) throws IOException {
         try {
-            w.write("int = " + identifier);
+            // w.write("int = " + identifier);
             w.newLine();
+            w.write("System.out.println(\"El valor de la variable \" + " + identifier + " + \" es: \" + (value of identifier)" + ");");
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        // w.write("El valor de la variable x es: " + identifier);
     }
 }

@@ -56,12 +56,13 @@ public class Main {
         // p3 - Generacion de código
         if (!error) {
             try {
-                String nombreFicheroJava = args[0] + ".java";
+                String fileName = new File(args[0]).getName().replaceFirst("[.][^.]+$", "");
+                String nombreFicheroJava = fileName + ".java";
                 BufferedWriter w = new BufferedWriter(new FileWriter(nombreFicheroJava));
                 w.write("import GeneratedCodeLib.*;");
                 w.newLine();
                 w.newLine();
-                w.write("public class " + args[0] + " {");
+                w.write("public class " + fileName + " {");
                 w.newLine();
                 programa.generateCode(w, "    ");
                 w.newLine();

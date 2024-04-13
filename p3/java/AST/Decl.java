@@ -29,27 +29,24 @@ public class Decl {
         identlist.computeAH1(ah1);
     }
 
-    public void generateCode(BufferedWriter w, String tabs) throws IOException {
-        String type_str = "";
+    public void generateCode(BufferedWriter w, String indent) throws IOException {
+        String typeStr = "";
         switch (type) {
             case 1:
-                type_str = "int";
+                typeStr = "int";
                 break;
             case 2:
-                type_str = "boolean";
+                typeStr = "boolean";
                 break;
             case 3:
-                type_str = "intset";
+                typeStr = "IntSet";
                 break;
-            // case 4:
-            //     type_str = "void";
-            //     break;
             default:
                 break;
         }
-        w.write(tabs + type_str + " ");
-        identlist.generateCode(w, tabs);
-        w.write(";");
+        w.write(indent + typeStr + " ");
+        identlist.generateCode(w, indent);
+        // w.write(";");
         w.newLine();
     }
 

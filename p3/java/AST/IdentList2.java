@@ -33,23 +33,11 @@ public class IdentList2 implements IdentList {
         SymbolTable.newEntry(identifier, ah1);
     }
 
-    public void generateCode(BufferedWriter w, String tabs) {
+    public void generateCode(BufferedWriter w, String indent) {
         try {
-            w.write(identifier + " = ");
-            switch (ah1) {
-                case 1:
-                    w.write("0");
-                    break;
-                case 2:
-                    w.write("false");
-                    break;
-                case 3:
-                    w.write("{}");
-                    break;
-                default:
-                    break;
-            }
-            identlist.generateCode(w, tabs);
+            w.write(identifier);
+            w.write(", ");
+            identlist.generateCode(w, indent);
         } catch (IOException e) {
             e.printStackTrace();
         }
