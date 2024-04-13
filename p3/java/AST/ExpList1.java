@@ -36,8 +36,6 @@ public class ExpList1 implements ExpList, Exp {
     }
 
     public void generateCode(BufferedWriter w) throws IOException {
-        //FIXME:
-        // review GenCode for an expression list
         exp.generateCode(w);
     }
 }

@@ -10,6 +10,9 @@
 
 package AST;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
+
 import Errors.CompilerExc;
 
 public class Body {
@@ -21,5 +24,9 @@ public class Body {
 
     public int computeStTyp() throws CompilerExc {
         return statementList.computeStTyp();
+    }
+
+    public void generateCode(BufferedWriter w, String indent) throws IOException {
+        statementList.generateCode(w, indent);
     }
 }

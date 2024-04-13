@@ -10,9 +10,6 @@
 
 package AST;
 
-import java.io.BufferedWriter;
-import java.io.IOException;
-
 import Errors.CompilerExc;
 
 public interface Statement {

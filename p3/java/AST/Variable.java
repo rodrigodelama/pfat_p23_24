@@ -27,8 +27,7 @@ public class Variable implements Exp {
         return SymbolTable.getType(this.identifier); //si no lanza la excepcion, devuelve el numero del tipo
     }
 
-    //FIXME: This method was missing
     public void generateCode(BufferedWriter w) throws IOException {
-        System.out.print(this.identifier);
+        w.write(id);
     }
 }

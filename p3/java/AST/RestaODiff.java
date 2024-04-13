@@ -41,6 +41,8 @@ public class RestaODiff implements Exp {
     }
 
     public void generateCode(BufferedWriter w) throws IOException {
+        //TODO: how to differentiate between int and intset?
+        
         // resta si son int
         w.write("(");
         exp1.generateCode(w);
@@ -48,7 +50,11 @@ public class RestaODiff implements Exp {
         exp2.generateCode(w);
         w.write(")");
 
-        //FIXME: Implementar la diferencia de conjuntos
         // diff si son intset
+        w.write("setDiff(");
+        exp1.generateCode(w);
+        w.write(", ");
+        exp2.generateCode(w);
+        w.write(")");
     }
 }

@@ -39,7 +39,6 @@ public class ExpList2 implements ExpList, Exp {
     }
 
     public void generateCode(BufferedWriter w) throws IOException {
-        //FIXME: review GenCode for an expression list
         exp.generateCode(w);
         w.write(", ");
         explist.generateCode(w);

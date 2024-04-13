@@ -13,6 +13,8 @@ package AST;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
+import GeneratedCodeLib.*;
+
 import Compiler.Typ;
 import Errors.CompilerExc;
 import Errors.TypExc;
@@ -37,13 +39,8 @@ public class Card implements Exp {
     }
 
     public void generateCode(BufferedWriter w) throws IOException {
-        //FIXME:
-        /*
-        w.write("int[] array = ");
+        w.write("card(");
         exp.generateCode(w);
-        w.write(";");
-        w.newLine();
-        w.write("int cardinality = array.length;");
-        */
+        w.write(")");
     }
 }

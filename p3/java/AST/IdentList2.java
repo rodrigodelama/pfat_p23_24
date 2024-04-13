@@ -11,6 +11,7 @@
 package AST;
 
 import java.io.BufferedWriter;
+import java.io.IOException;
 
 import Compiler.SymbolTable;
 import Errors.CompilerExc;
@@ -33,7 +34,20 @@ public class IdentList2 implements IdentList {
     }
 
     public void generateCode(BufferedWriter w, String tabs) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'generateCode'");
+        w.write(identifier + " = ");
+        switch (ah1) {
+            case 1:
+                w.write("0");
+                break;
+            case 2:
+                w.write("false");
+                break;
+            case 3:
+                w.write("{}");
+                break;
+            default:
+                break;
+        }
+        lv.generateCode(w, tabs);
     }
 }

@@ -10,6 +10,9 @@
 
 package AST;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
+
 import Errors.CompilerExc;
 
 public class LDecl1 implements LDecl {
@@ -21,5 +24,10 @@ public class LDecl1 implements LDecl {
 
     public void computeAH1() throws CompilerExc {
         decl.computeAH1();
+    }
+
+    public void generateCode(BufferedWriter w, String indent) throws IOException {
+        decl.generateCode(w, indent);
+        w.write(";");
     }
 }

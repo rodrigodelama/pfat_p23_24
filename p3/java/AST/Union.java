@@ -39,47 +39,10 @@ public class Union implements Exp {
     }
 
     public void generateCode(BufferedWriter w) throws IOException {
-        //FIXME: check if this is correct
-        /*
-        // Method to join two arrays
-        public static int[] joinArrays(int[] array1, int[] array2) {
-            int totalLength = array1.length + array2.length;
-            int[] result = new int[totalLength];
-            // Copy elements of array1 to result array
-            for (int i = 0; i < array1.length; i++) {
-                result[i] = array1[i];
-            }
-            // Copy elements of array2 to result array
-            for (int i = 0; i < array2.length; i++) {
-                result[array1.length + i] = array2[i];
-            }
-            return result;
-        }
-     */
-        w.write("int[] array1 = ");
+        w.write("unionSet(");
         exp1.generateCode(w);
-        w.write(";\n");
-        w.newLine();
-        w.write("int[] array2 = ");
+        w.write(", ");
         exp2.generateCode(w);
-        w.write(";\n");
-        w.newLine();
-        w.write("int totalLength = array1.length + array2.length;\n");
-        w.newLine();
-        w.write("int[] result = new int[totalLength];\n");
-        w.newLine();
-        w.write("for (int i = 0; i < array1.length; i++) {\n");
-        w.newLine();
-        w.write("    result[i] = array1[i];\n");
-        w.newLine();
-        w.write("}\n");
-        w.newLine();
-        w.write("for (int i = 0; i < array2.length; i++) {\n");
-        w.newLine();
-        w.write("    result[array1.length + i] = array2[i];\n");
-        w.newLine();
-        w.write("}\n");
-        w.newLine();
-        w.write("int[] union = result;\n");
+        w.write(")");
     }
 }

@@ -10,6 +10,9 @@
 
 package AST;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
+
 import Compiler.SymbolTable;
 import Compiler.Typ;
 import Errors.CompilerExc;
@@ -33,6 +36,18 @@ public class Statement1 implements Statement {
             return Typ.t_void;
         } else {
             throw new TypExc("ERROR: en Statement1 (asignación de valor de tipo incorrecto)");
-        } 
+        }
+    }
+
+    //IDENT:i ASIG Exp:e {:RESULT=new Statement1(i, e); :}
+    //TODO: review
+    public void generateCode(BufferedWriter w) throws CompilerExc {
+        try {
+            w.write(identifier + " = ");
+            exp.generateCode(w);
+            w.write(";\n");
+        } catch (Exception e) {
+            throw new CompilerExc(e.getMessage());
+        }
     }
 }

@@ -37,19 +37,11 @@ public class Prog1 implements Prog {
     public void generateCode(BufferedWriter w, String indent) throws IOException {
         w.write(indent+"public static void main(String args[]) {");
         w.newLine();
+        ldecl.generateCode(w, indent+"    ");
         w.newLine();
-        input.generateCode(w, indent+ " ");
-        size.generateCode(w, indent+"   ");
-        variables.generateCode(w, indent+"   ");
-        sentence.generateCode(w, indent+"   ");
+        body.generateCode(w, indent+"    ");
         w.newLine();
-
-        w.write(indent+"int[] flatArray = Flatt_Array.flatten2DArray(array);");
-        w.newLine();
-        w.write(indent+"BMP_Gen.map2BMP(alto_size, ancho_size, flatArray, args[");
-        w.write(args_length+1 + "]);");
-        w.newLine();
-        w.write("  }");
+        w.write(indent+"}");
         w.newLine();
     }
 }

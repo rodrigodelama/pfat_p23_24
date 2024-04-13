@@ -5,6 +5,7 @@
  * Rodrigo De Lama Fernández - 100451775
  * Isabel Schweim - 100460211
  * 
+ * abstract class
  * IntSetA.java
  */
 

@@ -60,9 +60,7 @@ public class Main {
                 BufferedWriter w = new BufferedWriter(new FileWriter(nombreFicheroJava));
                 w.write("import GeneratedCodeLib.*;");
                 w.newLine();
-                w.newLine();
                 w.write("public class " + args[1] + " {");
-                w.newLine();
                 w.newLine();
                 programa.generateCode(w, "    ");
                 w.newLine();

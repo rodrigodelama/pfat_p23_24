@@ -10,6 +10,9 @@
 
 package AST;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
+
 import Compiler.Typ;
 import Errors.CompilerExc;
 import Errors.TypExc;
@@ -33,5 +36,15 @@ public class Statement5 implements Statement {
         } else {
             throw new TypExc("ERROR: en Statement5 (error en  WHILE <Exp> DO <StatementList>)");
         } 
+    }
+
+    //WHILE Exp:e DO StatementList:sl END {:RESULT=new Statement5(e, sl); :}
+    //TODO: review
+    public void generateCode(BufferedWriter w) throws IOException {
+        w.write("while (");
+        exp.generateCode(w);
+        w.write(") {\n");
+        statementList.generateCode(w);
+        w.write("}\n");
     }
 }

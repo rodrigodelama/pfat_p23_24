@@ -10,6 +10,9 @@
 
 package AST;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
+
 import Compiler.Typ;
 import Errors.CompilerExc;
 import Errors.TypExc;
@@ -33,5 +36,11 @@ public class StatementList2 implements StatementList {
         } else {
             throw new TypExc("ERROR: en StatementList2");
         } 
+    }
+
+    public void generateCode(BufferedWriter w) throws IOException {
+        statement.generateCode(w);
+        w.write(", ");
+        statementlist.generateCode(w);
     }
 }

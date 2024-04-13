@@ -3,6 +3,7 @@
 
 cd java
 javac -d ../class Errors/*.java
+javac -d ../class GeneratedCodeLib/*.java
 javac -d ../class Compiler/*.java
 javac -d ../class AST/*.java
 cd Parser
@@ -33,6 +34,7 @@ java -cp ".;java-cup-11b-runtime.jar" Main filename.prg
 rm AST
 rm Compiler
 rm Errors
+rm GeneratedCodeLib
 rm JLex
 rm Lexer
 rm Parser

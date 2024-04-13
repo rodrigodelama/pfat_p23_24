@@ -40,33 +40,9 @@ public class In implements Exp {
     }
 
     public void generateCode(BufferedWriter w) throws IOException {
-        /*
-         *  public static boolean isIntInArray(int[] array, int target) {
-                for (int num : array) {
-                    if (num == target) {
-                        return true; // If the target integer is found, return true
-                    }
-                }
-                return false; // If the target integer is not found, return false
-            }
-         */
-
-        //FIXME: check if this is correct
-
-        w.write("int target = ");
-        exp1.generateCode(w); // assuming this is the target integer
-        w.write(";");
-        w.newLine();
-        w.write("int[] array = ");
-        exp2.generateCode(w); // assuming this is the array where we want to find the target integer
-        w.write(";");
-        w.newLine();
-        w.write("for (int num : array) {\r\n" + //
-                "   if (num == target) {\r\n" + //
-                "       return true; // If the target integer is found, return true\r\n" + //
-                "   }\r\n" + //
-                "   return false; // If the target integer is not found, return false\r\n" + //
-                "}");
-        w.newLine();
+        //TODO: how do i aplly belongsTo method to the exp2 intset?
+        w.write("belongsTo(");
+        exp1.generateCode(w);
+        w.write(")");
     }
 }

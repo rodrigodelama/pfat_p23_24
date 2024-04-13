@@ -10,8 +10,12 @@
 
 package AST;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
+
 import Errors.CompilerExc;
 
 public interface StatementList {
     public int computeStTyp() throws CompilerExc;
+    public void generateCode(BufferedWriter w) throws IOException;
 }

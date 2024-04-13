@@ -10,6 +10,9 @@
 
 package AST;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
+
 import Errors.CompilerExc;
 
 public class StatementList1 implements StatementList {
@@ -21,5 +24,9 @@ public class StatementList1 implements StatementList {
 
     public int computeStTyp() throws CompilerExc {
         return statement.computeStTyp();
+    }
+
+    public void generateCode(BufferedWriter w) throws IOException {
+        statement.generateCode(w);
     }
 }

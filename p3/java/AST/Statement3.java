@@ -10,6 +10,9 @@
 
 package AST;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
+
 import Compiler.SymbolTable;
 import Compiler.Typ;
 import Errors.CompilerExc;
@@ -31,5 +34,14 @@ public class Statement3 implements Statement {
         } else {
             throw new TypExc("ERROR: en Statement3 (no es un booleano)");
         } 
+    }
+
+    //PRINT_B PAREN IDENT:i TESIS {:RESULT=new Statement3(i); :}
+    //TODO: print the value of the boolean
+    public void generateCode(BufferedWriter w) throws IOException {
+        // w.write(identifier + " = ");
+        // w.write("true");
+        
+        // w.write("El valor de la variable x es: " + identifier);
     }
 }

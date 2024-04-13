@@ -11,10 +11,11 @@
 package AST;
 
 import java.io.BufferedWriter;
+import java.io.IOException;
 
 import Errors.CompilerExc;
 
 public interface IdentList {
     public void computeAH1(int type) throws CompilerExc;
-    public void generateCode(BufferedWriter w, String tabs);
+    public void generateCode(BufferedWriter w, String indent) throws IOException;
 }

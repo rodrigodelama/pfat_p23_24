@@ -35,26 +35,9 @@ public class Prog2 implements Prog {
     public void generateCode(BufferedWriter w, String indent) throws IOException {
         w.write(indent+"public static void main(String args[]) {");
         w.newLine();
-        w.write(indent+"    "+"if(args.length != " + (args_length+2) + ") {"); // +2 porque empieza en 0 y el nombre del archivo bmp
+        body.generateCode(w, indent+"    "); // indentacion mas profunda (4 espacios mas)
         w.newLine();
-        w.write(indent+"        "+"System.err.println(\"Error: invalid number of arguments\");");
-        w.newLine();
-        w.write(indent+"        "+"return;");
-        w.newLine();
-        w.write(indent+"    "+"}");
-        w.newLine();
-        input.generateCode(w, indent+ " ");
-        size.generateCode(w, indent+"   ");
-        variables.generateCode(w, indent+"   ");
-        sentence.generateCode(w, indent+"   ");
-        w.newLine();
-
-        w.write(indent+"int[] flatArray = Flatt_Array.flatten2DArray(array);");
-        w.newLine();
-        w.write(indent+"BMP_Gen.map2BMP(alto_size, ancho_size, flatArray, args[");
-        w.write(args_length+1 + "]);");
-        w.newLine();
-        w.write("  }");
+        w.write(indent+"}");
         w.newLine();
     }
 }

@@ -18,4 +18,8 @@ import Errors.CompilerExc;
 public interface Exp {
     public int computeTyp() throws CompilerExc;
     public void generateCode(BufferedWriter w) throws IOException;
+    /*
+        - no incluimos indent en "generateCode" porque no es necesario,
+            la indentacion se hace en el nivel superior del arbol
+    */
 }

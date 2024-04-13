@@ -10,6 +10,9 @@
 
 package AST;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
+
 import Compiler.SymbolTable;
 import Compiler.Typ;
 import Errors.CompilerExc;
@@ -31,5 +34,18 @@ public class Statement2 implements Statement {
         } else {
             throw new TypExc("ERROR: en Statement2 (no es un entero)");
         } 
+    }
+
+    //TODO: print the value of the integer
+    //PRINT_I PAREN IDENT:i TESIS {:RESULT=new Statement2(i); :}
+    public void generateCode(BufferedWriter w) throws CompilerExc {
+        // try {
+        //     w.write("int = " + identifier);
+        //     w.newLine();
+        // } catch (Exception e) {
+        //     throw new CompilerExc(e.getMessage());
+        // }
+
+        // w.write("El valor de la variable x es: " + identifier);
     }
 }

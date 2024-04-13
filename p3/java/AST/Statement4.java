@@ -10,6 +10,9 @@
 
 package AST;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
+
 import Compiler.Typ;
 import Errors.CompilerExc;
 import Errors.TypExc;
@@ -33,5 +36,15 @@ public class Statement4 implements Statement {
         } else {
             throw new TypExc("ERROR: en Statement4 (error en  IF <Exp> THEN <StatementList>)");
         } 
+    }
+
+    //IF Exp:e THEN StatementList:sl END {:RESULT=new Statement4(e, sl); :}
+    //TODO: review
+    public void generateCode(BufferedWriter w) throws IOException {
+        w.write("if (");
+        exp.generateCode(w);
+        w.write(") {\n");
+        statementList.generateCode(w);
+        w.write("}\n");
     }
 }

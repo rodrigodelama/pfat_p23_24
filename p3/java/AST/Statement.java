@@ -17,4 +17,5 @@ import Errors.CompilerExc;
 
 public interface Statement {
     public int computeStTyp() throws CompilerExc;
+    public void generateCode(BufferedWriter w) throws IOException;
 }
