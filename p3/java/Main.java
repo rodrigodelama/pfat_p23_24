@@ -53,7 +53,7 @@ public class Main {
             }
         }
 
-        // p3 - Generacion de código
+        // p3 - Generacion de codigo
         if (!error) {
             try {
                 String fileName = new File(args[0]).getName().replaceFirst("[.][^.]+$", "");

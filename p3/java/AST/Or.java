@@ -34,7 +34,7 @@ public class Or implements Exp {
         if((type1 == Typ.t_bool) && (type2 == Typ.t_bool)) {
             return Typ.t_bool;
         } else {
-            throw new TypExc("ERROR: en operación lógica OR (||)");
+            throw new TypExc("ERROR: en operacion logica OR (||)");
         }
     }
 

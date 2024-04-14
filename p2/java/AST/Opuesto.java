@@ -28,7 +28,7 @@ public class Opuesto implements Exp {
         if((ct == Typ.t_int)) {
             return Typ.t_int;
         } else {
-            throw new TypExc("ERROR: en operación aritmética OPUESTO (-)");
+            throw new TypExc("ERROR: en operacion aritmetica OPUESTO (-)");
         }
     }
 }

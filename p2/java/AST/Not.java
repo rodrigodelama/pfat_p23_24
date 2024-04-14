@@ -27,7 +27,7 @@ public class Not implements Exp {
         if((ct == Typ.t_bool)) {
             return Typ.t_bool;
         } else {
-            throw new TypExc("ERROR: en operación lógica NOT (!)");
+            throw new TypExc("ERROR: en operacion logica NOT (!)");
         }
     }
 }

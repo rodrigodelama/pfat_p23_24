@@ -54,7 +54,7 @@ int    {return tok(sym.TYPE, null); } // initially must be 0
 intset    {return tok(sym.TYPE, null); } // initially must be null
 // revisar si es correcto poner null
 
-// Signos de puntuación y operadores: 
+// Signos de puntuacion y operadores: 
 ";"		{return tok(sym.PC, null); }
 ":="		{return tok(sym.ASIG, null); }
 "<"		{return tok(sym.MENOR, null); }

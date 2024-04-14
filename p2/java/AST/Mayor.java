@@ -31,7 +31,7 @@ public class Mayor implements Exp {
         if((type1 == Typ.t_int) && (type2 == Typ.t_int)) {
             return Typ.t_bool;
         } else {
-            throw new TypExc("ERROR: en operación aritmética Mayor (>)");
+            throw new TypExc("ERROR: en operacion aritmetica Mayor (>)");
         }
     }
 }

@@ -31,7 +31,7 @@ public class And implements Exp {
         if((ct1 == Typ.t_bool) && (ct2 == Typ.t_bool)) {
             return Typ.t_bool;
         } else {
-            throw new TypExc("ERROR: en operación lógica AND (&&)");
+            throw new TypExc("ERROR: en operacion logica AND (&&)");
         }
     }
 }

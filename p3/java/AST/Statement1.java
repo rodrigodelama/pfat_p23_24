@@ -35,7 +35,7 @@ public class Statement1 implements Statement {
         if(st1 == st2) {
             return Typ.t_void;
         } else {
-            throw new TypExc("ERROR: en Statement1 (asignación de valor de tipo incorrecto)");
+            throw new TypExc("ERROR: en Statement1 (asignacion de valor de tipo incorrecto)");
         }
     }
 

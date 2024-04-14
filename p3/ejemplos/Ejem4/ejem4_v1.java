@@ -1,6 +1,6 @@
 /*
  * Procesamiento de Formatos en Aplicaciones Telematicas
- * Practica 3 - Generación de codigo
+ * Practica 3 - Generacion de codigo
  *
  * Rodrigo De Lama Fernández - 100451775
  * Isabel Schweim - 100460211

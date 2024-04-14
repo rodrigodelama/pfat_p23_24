@@ -47,7 +47,7 @@ precedence left MAS, MENOS;
 precedence left MUL, DIV;
 precedence left OPUESTO; // - (opuesto)
 
-// Reglas de producción
+// Reglas de produccion
 start with Prog; // Simbolo Inicial
 
 Prog ::= PROG IDENT:i DECL LDecl:ld Body:b {:RESULT=new Prog1(i, ld, b); :} 
@@ -78,44 +78,44 @@ ExpList ::= Exp:e {:RESULT=new ExpList1(e); :}
 
 //Expresiones sin tipo definido
 Exp ::= IDENT:s {:RESULT=new Variable(s); :} //Un identificador que sea el nombre de una variable. Será del tipo de la variable.
-      | PAREN Exp:e TESIS {:RESULT=new Parentesis(e); :} //Una expresión entre paréntesis. Será del tipo de la expresión contenida dentro de los paréntesis.
+      | PAREN Exp:e TESIS {:RESULT=new Parentesis(e); :} //Una expresion entre parentesis. Será del tipo de la expresion contenida dentro de los parentesis.
       
       //Expresiones de tipo int
       | CINT:n {:RESULT=new ConstanteEntera(n.intValue()); :} //Una constante expresada en decimal.
       | Exp:e1 MAS Exp:e2 {:RESULT=new Suma(e1, e2); :} //Una suma de expresiones de tipo int utilizando el operador "+".
       | Exp:e1 MENOS Exp:e2 {:RESULT=new RestaODiff(e1, e2); :} //Una resta de expresiones de tipo int utilizando el operador "-".
-      | Exp:e1 MUL Exp:e2 {:RESULT=new Multiplicacion(e1, e2); :} //Una multiplicación de expresiones de tipo int utilizando el operador "*".
-      | Exp:e1 DIV Exp:e2 {:RESULT=new Division(e1, e2); :} //Una división de expresiones de tipo int utilizando el operador "/".
-      | MENOS Exp:e {:RESULT=new Opuesto(e); :} %prec OPUESTO //El opuesto de una expresión de tipo int, utilizando el símbolo habitual "-" antes de la expresión.
-      | CARD PAREN Exp:e TESIS {:RESULT=new Card(e); :} //El número de elementos de un conjunto de enteros, utilizando la función card.
-      | LOWEST_ELEM PAREN Exp:e TESIS {:RESULT=new LowestElem(e); :} //El menor elemento de un conjunto de enteros, utilizando la función lowest_elem.
-          //Nota: el código generado en la práctica 3 debe lanzar una excepcióncuando lowest_elem sea aplicado al conjunto vacío.
+      | Exp:e1 MUL Exp:e2 {:RESULT=new Multiplicacion(e1, e2); :} //Una multiplicacion de expresiones de tipo int utilizando el operador "*".
+      | Exp:e1 DIV Exp:e2 {:RESULT=new Division(e1, e2); :} //Una division de expresiones de tipo int utilizando el operador "/".
+      | MENOS Exp:e {:RESULT=new Opuesto(e); :} %prec OPUESTO //El opuesto de una expresion de tipo int, utilizando el símbolo habitual "-" antes de la expresion.
+      | CARD PAREN Exp:e TESIS {:RESULT=new Card(e); :} //El número de elementos de un conjunto de enteros, utilizando la funcion card.
+      | LOWEST_ELEM PAREN Exp:e TESIS {:RESULT=new LowestElem(e); :} //El menor elemento de un conjunto de enteros, utilizando la funcion lowest_elem.
+          //Nota: el codigo generado en la práctica 3 debe lanzar una excepcioncuando lowest_elem sea aplicado al conjunto vacío.
       
       //Expresiones de tipo intset (conjunto de enteros)
       | BRAC KET {:RESULT=new ConjuntoVacio(); :} //Un conjunto vacío, utilizando los símbolos "{" y "}" para delimitar la lista de elementos.
       | EMPTYSET {:RESULT=new ConjuntoVacio(); :} //Un conjunto vacío, utilizando el símbolo emptyset.
             /*
-              Una expresión que comienza por {, termina por } y contiene una lista de subexpresiones de tipo int,
+              Una expresion que comienza por {, termina por } y contiene una lista de subexpresiones de tipo int,
               separadas por comas. Representa un conjunto de enteros cuyos elementos son los enteros resultado de
               evaluar las subexpresiones.
             */
       | BRAC ExpList:el KET {:RESULT=new Conjunto(el); :} //Un conjunto de enteros, utilizando los símbolos "{" y "}" para delimitar la lista de elementos.
           //TODO: Repasar ExpList, tiene sentido?
-      | Exp:e1 UNION Exp:e2 {:RESULT=new Union(e1, e2); :} //La unión de dos conjuntos de enteros, utilizando el operador union.
-      | Exp:e1 INTERSEC Exp:e2 {:RESULT=new Interseccion(e1, e2); :} //La intersección de dos conjuntos de enteros, utilizando el operador intersec.
+      | Exp:e1 UNION Exp:e2 {:RESULT=new Union(e1, e2); :} //La union de dos conjuntos de enteros, utilizando el operador union.
+      | Exp:e1 INTERSEC Exp:e2 {:RESULT=new Interseccion(e1, e2); :} //La interseccion de dos conjuntos de enteros, utilizando el operador intersec.
           // exp DIFF exp ES LA MISMA REGLA QUE MENOS, ya veremos como se soluciona más adelante
       
           //Expresiones de tipo bool
       | CLOG:c {:RESULT=new ConstanteBooleana(c.booleanValue()); :} //Una constante de tipo bool.
-      | Exp:e1 AND Exp:e2 {:RESULT=new And(e1, e2); :} //La conjunción de dos expresiones lógicas, utilizando el operador and.
-      | Exp:e1 OR Exp:e2 {:RESULT=new Or(e1, e2); :} //La disyunción de dos expresiones lógicas, utilizando el operador or.
-      | NOT Exp:e1 {:RESULT=new Not(e1); :} //Una expresión lógica negada, utilizando el operador not antes de la expresión lógica.
+      | Exp:e1 AND Exp:e2 {:RESULT=new And(e1, e2); :} //La conjuncion de dos expresiones logicas, utilizando el operador and.
+      | Exp:e1 OR Exp:e2 {:RESULT=new Or(e1, e2); :} //La disyuncion de dos expresiones logicas, utilizando el operador or.
+      | NOT Exp:e1 {:RESULT=new Not(e1); :} //Una expresion logica negada, utilizando el operador not antes de la expresion logica.
       | Exp:e1 IGUAL Exp:e2 {:RESULT=new Igual(e1, e2); :} //La igualdad entre dos expresiones, utilizando el operador "=".
-      | Exp:e1 MENOR Exp:e2 {:RESULT=new Menor(e1, e2); :} //La comparación entre 2 expresiones de tipo int utilizando el operador "<" (menor que).
-      | Exp:e1 MAYOR Exp:e2 {:RESULT=new Mayor(e1, e2); :} //La comparación entre 2 expresiones de tipo int utilizando el operador ">".
-      | Exp:e1 IN Exp:e2 {:RESULT=new In(e1, e2); :} ;//Una expresión que pertenezca al lenguaje definido por la expresión lingüística <Exp> in <Exp>
-                                                      //donde la primera subexpresión ha de ser de tipo int y la segunda de tipo intset. Devuelve true
-                                                      //si el entero resultado de evaluar la primera subexpresión pertenece al conjunto resultado de
+      | Exp:e1 MENOR Exp:e2 {:RESULT=new Menor(e1, e2); :} //La comparacion entre 2 expresiones de tipo int utilizando el operador "<" (menor que).
+      | Exp:e1 MAYOR Exp:e2 {:RESULT=new Mayor(e1, e2); :} //La comparacion entre 2 expresiones de tipo int utilizando el operador ">".
+      | Exp:e1 IN Exp:e2 {:RESULT=new In(e1, e2); :} ;//Una expresion que pertenezca al lenguaje definido por la expresion lingüística <Exp> in <Exp>
+                                                      //donde la primera subexpresion ha de ser de tipo int y la segunda de tipo intset. Devuelve true
+                                                      //si el entero resultado de evaluar la primera subexpresion pertenece al conjunto resultado de
                                                       //evaluar la segunda y false en caso contrario.
 
 //Nota: para definir las expresiones puede ser necesario definir algún símbolo no terminal adicional en la gramática.

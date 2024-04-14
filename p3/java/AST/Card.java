@@ -34,7 +34,7 @@ public class Card implements Exp {
         if (ct == Typ.t_intset) {
             return Typ.t_int;
         } else {
-            throw new TypExc("ERROR: en operación Cardinalidad");
+            throw new TypExc("ERROR: en operacion Cardinalidad");
         }
     }
 
