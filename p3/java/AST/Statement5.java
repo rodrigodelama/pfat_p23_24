@@ -41,11 +41,13 @@ public class Statement5 implements Statement {
     //WHILE Exp:e DO StatementList:sl END {:RESULT=new Statement5(e, sl); :}
     //TODO: review
     public void generateCode(BufferedWriter w, String indent) throws IOException {
-        w.write("while (");
+        w.newLine(); // new line before while loop
+        w.write(indent + "while (");
         exp.generateCode(w);
         w.write(") {\n");
         statementList.generateCode(w, indent + "    "); // further indent inside while loop
         w.newLine();
-        w.write(indent + "}\n");
+        w.write(indent + "}");
+        w.newLine();
     }
 }

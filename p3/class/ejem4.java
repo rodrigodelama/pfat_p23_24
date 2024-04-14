@@ -5,16 +5,17 @@
  * Rodrigo De Lama Fernández - 100451775
  * Isabel Schweim - 100460211
  *
- * ejem1.java
+ * ejem4.java
  */
 
 import GeneratedCodeLib.*;
 import java.util.Vector;
 
-public class ejem1 {
+public class ejem4 {
     public static void main(String args[]) {
-        IntSet a, b, c, d;
+        IntSet a, b, c, d, e;
         int a1, b1, c1, d1;
+        int numElem, elem, i;
 
         a = ;
         b = ;
@@ -27,7 +28,31 @@ public class ejem1 {
         c1 = card(c);
         System.out.println("El valor de la variable " + c1 + " es: " + (value of identifier));
         d1 = card(d);
-
         System.out.println("El valor de la variable " + d1 + " es: " + (value of identifier));
+        i = 0;
+        e = ;
+        while (((i > 100))) {
+            e = unionSet(e, );
+            if ((((i > 80)) || ((((i / 4)) * 4) = i))) {
+
+                e = unionSet(e, );
+            }
+
+
+            i = (i + 1);
+        }
+
+        i = 0;
+        e = unionSet(e, b);
+
+        while ((card(e) > 0)) {
+            elem = lowestElem(e);
+            System.out.println("El valor de la variable " + i + " es: " + (value of identifier));
+            System.out.println("El valor de la variable " + elem + " es: " + (value of identifier));
+            i = (i + 1);
+
+            e = (e - )setDiff(e, );
+        }
+
     }
 }

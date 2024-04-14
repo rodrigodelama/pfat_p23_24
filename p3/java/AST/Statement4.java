@@ -41,11 +41,13 @@ public class Statement4 implements Statement {
     //IF Exp:e THEN StatementList:sl END {:RESULT=new Statement4(e, sl); :}
     //TODO: review
     public void generateCode(BufferedWriter w, String indent) throws IOException {
-        w.write("if (");
+        w.newLine();
+        w.write(indent + "if (");
         exp.generateCode(w);
         w.write(") {\n");
         statementList.generateCode(w, indent + "    "); // further indent inside if block
         w.newLine();
-        w.write(indent + "}\n");
+        w.write(indent + "}");
+        w.newLine();
     }
 }

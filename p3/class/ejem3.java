@@ -1,6 +1,6 @@
 /*
  * Procesamiento de Formatos en Aplicaciones Telematicas
- * Practica 3 - Generación de codigo
+ * Practica 3 - Generacion de codigo
  *
  * Rodrigo De Lama Fernández - 100451775
  * Isabel Schweim - 100460211
@@ -33,6 +33,7 @@ public class ejem3 {
         numElem = card(c);
         i = 0;
         control1 = true;
+        
         while (((card(c) > 0) && control1)) {
             elem = lowestElem(c);
             System.out.println("El valor de la variable " + i + " es: " + (value of identifier));
@@ -42,6 +43,7 @@ public class ejem3 {
             numElem = (numElem - 1)setDiff(numElem, 1);
             c = (c - )setDiff(c, );
 
+            
             if (( !(numElem = card(c)))) {
 
                 control1 = false;
