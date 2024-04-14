@@ -39,9 +39,9 @@ public class Interseccion implements Exp {
     }
 
     public void generateCode(BufferedWriter w) throws IOException {
-        w.write("intersectionSet(");
+        w.write("(IntSet) ");
         exp1.generateCode(w);
-        w.write(", ");
+        w.write(".intersectionSet(");
         exp2.generateCode(w);
         w.write(")");
     }

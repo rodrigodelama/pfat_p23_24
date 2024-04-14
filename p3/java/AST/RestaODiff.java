@@ -51,9 +51,9 @@ public class RestaODiff implements Exp {
         w.write(")");
 
         // diff si son intset
-        w.write("setDiff(");
+        w.write("(IntSet) ");
         exp1.generateCode(w);
-        w.write(", ");
+        w.write(".setDiff(");
         exp2.generateCode(w);
         w.write(")");
     }

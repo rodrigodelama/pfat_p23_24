@@ -39,9 +39,9 @@ public class Union implements Exp {
     }
 
     public void generateCode(BufferedWriter w) throws IOException {
-        w.write("unionSet(");
+        w.write("(IntSet) ");
         exp1.generateCode(w);
-        w.write(", ");
+        w.write(".unionSet(");
         exp2.generateCode(w);
         w.write(")");
     }

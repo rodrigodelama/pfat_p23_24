@@ -39,8 +39,7 @@ public class Card implements Exp {
     }
 
     public void generateCode(BufferedWriter w) throws IOException {
-        w.write("card(");
         exp.generateCode(w);
-        w.write(")");
+        w.write(".card()");
     }
 }

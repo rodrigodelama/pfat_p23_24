@@ -27,7 +27,6 @@ public class StatementList1 implements StatementList {
     }
 
     public void generateCode(BufferedWriter w, String indent) throws IOException {
-        w.newLine();
         w.write(indent);
         statement.generateCode(w, indent);
     }

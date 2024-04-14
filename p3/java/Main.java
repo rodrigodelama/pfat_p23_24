@@ -72,6 +72,7 @@ public class Main {
                 w.newLine();
                 w.newLine();
                 w.write("import GeneratedCodeLib.*;\n");
+                w.write("import java.util.Set;\n");
                 w.write("import java.util.Vector;\n");
                 w.newLine();
                 w.write("public class " + fileName + " {");

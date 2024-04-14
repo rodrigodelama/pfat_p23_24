@@ -29,7 +29,7 @@ public class ConjuntoVacio implements Exp {
     }
 
     public void generateCode(BufferedWriter w) throws IOException {
-        // w.write("{ }");
+        w.write("new IntSet(new Vector<>())");
     }
 
 }

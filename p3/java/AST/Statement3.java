@@ -40,7 +40,7 @@ public class Statement3 implements Statement {
     //TODO: print the value of the boolean
     public void generateCode(BufferedWriter w, String indent) throws IOException {
         try {
-            w.write("System.out.println(\"El valor de la variable \" + " + identifier + " + \" es: \" + (value of identifier)" + ");");
+            w.write("System.out.println(\"El valor de la variable " + identifier + " es: \" + " + identifier + ");");
         } catch (IOException e) {
             e.printStackTrace();
         }

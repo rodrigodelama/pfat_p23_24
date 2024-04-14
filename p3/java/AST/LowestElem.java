@@ -35,8 +35,7 @@ public class LowestElem implements Exp {
     }
 
     public void generateCode(BufferedWriter w) throws IOException {
-        w.write("lowestElem(");
         exp.generateCode(w);
-        w.write(")");
+        w.write(".lowestElem()");
     }
 }

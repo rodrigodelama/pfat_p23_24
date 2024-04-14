@@ -37,11 +37,9 @@ public class Conjunto implements Exp {
     }
 
     public void generateCode(BufferedWriter w) throws IOException {
-        //FIXME:
-        /*
-        System.out.print("{ ");
+        //FIXME: a = new IntSet(new Vector<>(Set.of(0, 1, 3, 5, 7, 9)));
+        w.write("new IntSet(new Vector<>(Set.of(");
         expList.generateCode(w);
-        System.out.print(" }");
-        */
+        w.write(")))");
     }
 }
