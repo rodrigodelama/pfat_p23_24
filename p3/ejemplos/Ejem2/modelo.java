@@ -5,17 +5,19 @@
  * Rodrigo De Lama Fernández - 100451775
  * Isabel Schweim - 100460211
  *
- * ejem1.java
+ * ejem2.java
  */
 
 import GeneratedCodeLib.*;
 import java.util.Set;
 import java.util.Vector;
+import Errors.*;
 
-public class ejem1 {
+public class ejem2 {
     public static void main(String args[]) {
         IntSet a, b, c, d;
         int a1, b1, c1, d1;
+        int numElem, elem, i;
 
         a = new IntSet(new Vector<>(Set.of(0, 1, 3, 5, 7, 9)));
         b = new IntSet(new Vector<>(Set.of(0, 2, 4, 6, 8)));
@@ -29,5 +31,26 @@ public class ejem1 {
         System.out.println("El valor de la variable c1 es: " + c1);
         d1 = d.card();
         System.out.println("El valor de la variable d1 es: " + d1);
+        numElem = c.card();
+        i = 0;
+        
+        while (((c.card() > 0) && (i > ( -1)))) {
+            elem = 4;
+            try {
+                elem = c.lowestElem();
+            } catch (EmptySetException e) {
+                System.out.println("ERROR: Conjunto vacío");
+            }
+
+            System.out.println("El valor de la variable i es: " + i);
+            System.out.println("El valor de la variable elem es: " + elem);
+            i = (i + 1);
+            numElem = (numElem - 1);
+            c = (IntSet) c.setDif(new IntSet(new Vector<>(Set.of(elem))));
+            
+            if (( !(numElem == c.card()))) {
+                i = ( -1);
+            }
+        }
     }
 }

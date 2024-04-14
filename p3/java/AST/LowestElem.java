@@ -35,7 +35,21 @@ public class LowestElem implements Exp {
     }
 
     public void generateCode(BufferedWriter w) throws IOException {
+        //TODO: it needs to be inside a try-catch block
+        // but we can't do that here
+        // IDENT ASIG EXP
+
+        // but we can't do that always
+        // because only THIS assignment throws the EmptySetException
+
+
+        // w.write("try {\n");
+        // w.write("    ");
         exp.generateCode(w);
         w.write(".lowestElem()");
+        // // w.write("    ");
+        // w.write("} catch (EmptySetException e) {\n");
+        // w.write("    System.out.println(\"ERROR: Conjunto vacío\");\n");
+        // w.write("}\n");
     }
 }

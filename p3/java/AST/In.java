@@ -41,7 +41,8 @@ public class In implements Exp {
 
     public void generateCode(BufferedWriter w) throws IOException {
         //TODO: how do i aplly belongsTo method to the exp2 intset?
-        w.write("belongsTo(");
+        exp2.generateCode(w);
+        w.write(".belongsTo(");
         exp1.generateCode(w);
         w.write(")");
     }

@@ -48,6 +48,5 @@ public class Statement4 implements Statement {
         statementList.generateCode(w, indent + "    "); // further indent inside if block
         w.newLine();
         w.write(indent + "}");
-        w.newLine();
     }
 }

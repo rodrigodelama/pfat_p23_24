@@ -105,7 +105,7 @@ Exp ::= IDENT:s {:RESULT=new Variable(s); :} //Un identificador que sea el nombr
       | Exp:e1 INTERSEC Exp:e2 {:RESULT=new Interseccion(e1, e2); :} //La intersección de dos conjuntos de enteros, utilizando el operador intersec.
           // exp DIFF exp ES LA MISMA REGLA QUE MENOS, ya veremos como se soluciona más adelante
       
-          //Expresiones de tipo bool
+      //Expresiones de tipo bool
       | CLOG:c {:RESULT=new ConstanteBooleana(c.booleanValue()); :} //Una constante de tipo bool.
       | Exp:e1 AND Exp:e2 {:RESULT=new And(e1, e2); :} //La conjunción de dos expresiones lógicas, utilizando el operador and.
       | Exp:e1 OR Exp:e2 {:RESULT=new Or(e1, e2); :} //La disyunción de dos expresiones lógicas, utilizando el operador or.
@@ -118,4 +118,4 @@ Exp ::= IDENT:s {:RESULT=new Variable(s); :} //Un identificador que sea el nombr
                                                       //si el entero resultado de evaluar la primera subexpresión pertenece al conjunto resultado de
                                                       //evaluar la segunda y false en caso contrario.
 
-//Nota: para definir las expresiones puede ser necesario definir algún símbolo no terminal adicional en la gramática.
+//Nota: para definir las expresiones puede ser necesario definir algún símbolo no terminal adicional en la gramática. --> era ExpList
