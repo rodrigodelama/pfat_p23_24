@@ -23,3 +23,4 @@ java -cp ".;java-cup-11b-runtime.jar" Main ../ejemplos/ErrSem2/errSem2.prg
 java -cp ".;java-cup-11b-runtime.jar" Main ../ejemplos/ErrSem3/errSem3.prg
 java -cp ".;java-cup-11b-runtime.jar" Main ../ejemplos/ErrSem4/errSem4.prg
 java -cp ".;java-cup-11b-runtime.jar" Main ../ejemplos/ErrSem5/errSem5.prg
+

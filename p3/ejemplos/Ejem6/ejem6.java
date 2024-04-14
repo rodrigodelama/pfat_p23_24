@@ -5,7 +5,7 @@
  * Rodrigo De Lama Fernández - 100451775
  * Isabel Schweim - 100460211
  *
- * ejem2.java
+ * ejem6.java
  */
 
 import GeneratedCodeLib.*;
@@ -13,16 +13,17 @@ import Errors.*;
 import java.util.Set;
 import java.util.Vector;
 
-public class ejem2 {
+public class ejem6 {
     public static void main(String args[]) {
-        IntSet a, b, c, d;
-        int a1, b1, c1, d1;
-        int numElem, elem, i;
+        IntSet a, b, c, d, e;
+        int a1, b1, c1, d1, e1;
+        int i, sig;
 
-        a = new IntSet(new Vector<>(Set.of(0, 1, 3, 5, 7, 9)));
-        b = new IntSet(new Vector<>(Set.of(0, 2, 4, 6, 8)));
+        a = new IntSet(new Vector<>(Set.of(0, 1, 3, 5, ( -2), 7, 9, 4)));
+        b = new IntSet(new Vector<>(Set.of(0, ( -2), 4, ( -6), 8, 10)));
         c = (IntSet) a.unionSet(b);
         d = (IntSet) a.intersectionSet(b);
+        e = (IntSet) a.setDif(b);
         a1 = a.card();
         System.out.println("El valor de la variable a1 es: " + a1);
         b1 = b.card();
@@ -31,20 +32,16 @@ public class ejem2 {
         System.out.println("El valor de la variable c1 es: " + c1);
         d1 = d.card();
         System.out.println("El valor de la variable d1 es: " + d1);
-        numElem = c.card();
+        e1 = e.card();
+        System.out.println("El valor de la variable e1 es: " + e1);
         i = 0;
         
-        while (((c.card() > 0) && (i > ( -1)))) {
-            elem = c.lowestElem();
+        while (( !((e == new IntSet(new Vector<>()))))) {
+            sig = e.lowestElem();
             System.out.println("El valor de la variable i es: " + i);
-            System.out.println("El valor de la variable elem es: " + elem);
+            System.out.println("El valor de la variable sig es: " + sig);
             i = (i + 1);
-            numElem = (numElem - 1);
-            c = (IntSet) c.setDif(new IntSet(new Vector<>(Set.of(elem))));
-            
-            if (( !((numElem == c.card())))) {
-                i = ( -1);
-            }
+            e = (IntSet) e.setDif(new IntSet(new Vector<>(Set.of(sig))));
         }
     }
 }

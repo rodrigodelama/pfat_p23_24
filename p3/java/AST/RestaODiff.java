@@ -32,7 +32,7 @@ public class RestaODiff implements Exp {
         type1 = exp1.computeTyp();
         type2 = exp2.computeTyp();
         type1GenCode = type1;
-        type2GenCode; = type2;
+        type2GenCode = type2;
         
         if((type1 == Typ.t_int) && (type2 == Typ.t_int)) {
             return Typ.t_int;
@@ -44,15 +44,14 @@ public class RestaODiff implements Exp {
     }
 
     public void generateCode(BufferedWriter w) throws IOException {
-        //TODO: how to differentiate between int and intset?
-        if((type1GenCode == Typ.t_int) && (type2GenCode; == Typ.t_int)) {
+        if((type1GenCode == Typ.t_int) && (type2GenCode == Typ.t_int)) {
             // resta si son int
             w.write("(");
             exp1.generateCode(w);
             w.write(" - ");
             exp2.generateCode(w);
             w.write(")");
-        } else if((type1GenCode == Typ.t_intset) && (type2GenCode; == Typ.t_intset)) {
+        } else if((type1GenCode == Typ.t_intset) && (type2GenCode == Typ.t_intset)) {
             // diff si son intset
             w.write("(IntSet) ");
             exp1.generateCode(w);
