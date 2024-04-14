@@ -59,12 +59,24 @@ public class Main {
                 String fileName = new File(args[0]).getName().replaceFirst("[.][^.]+$", "");
                 String nombreFicheroJava = fileName + ".java";
                 BufferedWriter w = new BufferedWriter(new FileWriter(nombreFicheroJava));
-                w.write("import GeneratedCodeLib.*;");
+                
+                w.write("/*\n");
+                w.write(" * Procesamiento de Formatos en Aplicaciones Telematicas\n");
+                w.write(" * Practica 3 - Generacion de codigo\n");
+                w.write(" *\n");
+                w.write(" * Rodrigo De Lama Fernández - 100451775\n");
+                w.write(" * Isabel Schweim - 100460211\n");
+                w.write(" *\n");
+                w.write(" * " + fileName + ".java\n");
+                w.write(" */");
                 w.newLine();
+                w.newLine();
+                w.write("import GeneratedCodeLib.*;\n");
+                w.write("import java.util.Vector;\n");
                 w.newLine();
                 w.write("public class " + fileName + " {");
                 w.newLine();
-                programa.generateCode(w, "    ");
+                programa.generateCode(w, "    "); // indentacion de 4 espacios
                 w.newLine();
                 w.write("}");
                 w.newLine();

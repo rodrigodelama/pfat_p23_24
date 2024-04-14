@@ -45,7 +45,7 @@ public class Statement1 implements Statement {
         try {
             w.write(identifier + " = ");
             exp.generateCode(w);
-            w.write(";\n");
+            w.write(";");
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -38,6 +38,5 @@ public class Prog2 implements Prog {
         body.generateCode(w, indent+"    "); // indentacion mas profunda (4 espacios mas)
         w.newLine();
         w.write(indent+"}");
-        w.newLine();
     }
 }

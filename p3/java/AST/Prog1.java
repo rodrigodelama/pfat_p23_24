@@ -42,6 +42,5 @@ public class Prog1 implements Prog {
         body.generateCode(w, indent+"    ");
         w.newLine();
         w.write(indent+"}");
-        w.newLine();
     }
 }

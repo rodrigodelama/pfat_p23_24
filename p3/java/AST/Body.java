@@ -27,6 +27,7 @@ public class Body {
     }
 
     public void generateCode(BufferedWriter w, String indent) throws IOException {
+        w.newLine(); // to separate the declarations from the body
         statementList.generateCode(w, indent);
     }
 }

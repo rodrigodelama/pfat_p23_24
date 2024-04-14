@@ -46,8 +46,5 @@ public class Decl {
         }
         w.write(indent + typeStr + " ");
         identlist.generateCode(w, indent);
-        // w.write(";");
-        w.newLine();
     }
-
 }

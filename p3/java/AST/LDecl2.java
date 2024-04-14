@@ -31,7 +31,8 @@ public class LDecl2 implements LDecl {
 
     public void generateCode(BufferedWriter w, String indent) throws IOException {
         decl.generateCode(w, indent);
-        ldecl.generateCode(w, indent);
+        w.write(";");
         w.newLine();
+        ldecl.generateCode(w, indent);
     }
 }

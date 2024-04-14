@@ -44,7 +44,8 @@ public class Statement4 implements Statement {
         w.write("if (");
         exp.generateCode(w);
         w.write(") {\n");
-        statementList.generateCode(w, "    ");
-        w.write("}\n");
+        statementList.generateCode(w, indent + "    "); // further indent inside if block
+        w.newLine();
+        w.write(indent + "}\n");
     }
 }

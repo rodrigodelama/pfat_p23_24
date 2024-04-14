@@ -44,7 +44,8 @@ public class Statement5 implements Statement {
         w.write("while (");
         exp.generateCode(w);
         w.write(") {\n");
-        statementList.generateCode(w, indent+"    ");
-        w.write("}\n");
+        statementList.generateCode(w, indent + "    "); // further indent inside while loop
+        w.newLine();
+        w.write(indent + "}\n");
     }
 }
