@@ -10,7 +10,6 @@
 
 package AST;
 
-
 import Errors.CompilerExc;
 
 public class Parentesis implements Exp {
