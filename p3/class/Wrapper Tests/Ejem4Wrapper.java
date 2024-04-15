@@ -1,20 +1,32 @@
-/*
- * Procesamiento de Formatos en Aplicaciones Telematicas
- * Practica 3 - Generacion de codigo
- *
- * Rodrigo De Lama Fernández - 100451775
- * Isabel Schweim - 100460211
- *
- * ejem4.java
- */
-
 import GeneratedCodeLib.*;
 import Errors.*;
 import java.util.Set;
 import java.util.Vector;
 
-public class ejem4 {
+@FunctionalInterface
+interface CodeExecutor {
+    void execute() throws EmptySetException;
+}
+
+public class Ejem4Wrapper {
     public static void main(String args[]) {
+        executeSafely(ejem4::execute);
+    }
+
+    public static void executeSafely(CodeExecutor executor) {
+        try {
+            executor.execute();
+        } catch (EmptySetException e) {
+            System.err.println(e.toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+class ejem4 {
+    public static void execute() throws EmptySetException {
+        // Generated code for ejem4
         IntSet a, b, c, d, e;
         int a1, b1, c1, d1;
         int numElem, elem, i;
