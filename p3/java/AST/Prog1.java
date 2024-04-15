@@ -35,7 +35,7 @@ public class Prog1 implements Prog {
     }
 
     public void generateCode(BufferedWriter w, String indent) throws IOException {
-        w.write(indent+"public static void main(String args[]) {");
+        w.write(indent+"public static void execute() throws EmptySetException {");
         w.newLine();
         ldecl.generateCode(w, indent+"    ");
         w.newLine();

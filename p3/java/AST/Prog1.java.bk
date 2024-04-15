@@ -5,7 +5,7 @@
  * Rodrigo De Lama Fernández - 100451775
  * Isabel Schweim - 100460211
  * 
- * Prog2.java
+ * Prog1.java
  */
 
 package AST;
@@ -15,17 +15,19 @@ import java.io.IOException;
 
 import Errors.CompilerExc;
 
-public class Prog2 implements Prog {
+public class Prog1 implements Prog {
     public final String identifier;
+    public final LDecl ldecl;
     public final Body body;
 
-    public Prog2(String identifier, Body body) {
+    public Prog1(String identifier, LDecl ldecl, Body body) {
         this.identifier = identifier;
+        this.ldecl = ldecl;
         this.body = body;
     }
 
     public void computeAH1() throws CompilerExc {
-        // para propagarlo
+        ldecl.computeAH1();
     }
 
     public void computeTyp() throws CompilerExc {
@@ -33,9 +35,11 @@ public class Prog2 implements Prog {
     }
 
     public void generateCode(BufferedWriter w, String indent) throws IOException {
-        w.write(indent+"public static void execute() throws EmptySetException {");
+        w.write(indent+"public static void main(String args[]) {");
         w.newLine();
-        body.generateCode(w, indent+"    "); // indentacion mas profunda (4 espacios mas)
+        ldecl.generateCode(w, indent+"    ");
+        w.newLine();
+        body.generateCode(w, indent+"    ");
         w.newLine();
         w.write(indent+"}");
     }

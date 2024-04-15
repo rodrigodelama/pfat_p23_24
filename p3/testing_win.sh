@@ -3,14 +3,29 @@
 # pfat_p23_24/pX/class/
 
 java -cp ".;java-cup-11b-runtime.jar" Main ../ejemplos/Ejem1/ejem1.prg
+javac ejem1.java
 java -cp ".;java-cup-11b-runtime.jar" Main ../ejemplos/Ejem2/ejem2.prg
+javac ejem2.java
 java -cp ".;java-cup-11b-runtime.jar" Main ../ejemplos/Ejem3/ejem3.prg
+javac ejem3.java
 java -cp ".;java-cup-11b-runtime.jar" Main ../ejemplos/Ejem4/ejem4.prg
+javac ejem4.java
 java -cp ".;java-cup-11b-runtime.jar" Main ../ejemplos/Ejem5/ejem5.prg
+javac ejem5.java
 java -cp ".;java-cup-11b-runtime.jar" Main ../ejemplos/Ejem6/ejem6.prg
+javac ejem6.java
 java -cp ".;java-cup-11b-runtime.jar" Main ../ejemplos/Ejem7/ejem7.prg
+javac ejem7.java
 java -cp ".;java-cup-11b-runtime.jar" Main ../ejemplos/Ejem8/ejem8.prg
+javac ejem8.java
 java -cp ".;java-cup-11b-runtime.jar" Main ../ejemplos/Ejem9/ejem9.prg
+javac ejem9.java
+
+# To test the generated files
+java ejemX
+
+# To clean up the generated files
+rm ejem*
 
 java -cp ".;java-cup-11b-runtime.jar" Main ../ejemplos/ErrSint1/errSint1.prg
 java -cp ".;java-cup-11b-runtime.jar" Main ../ejemplos/ErrSint2/errSint2.prg

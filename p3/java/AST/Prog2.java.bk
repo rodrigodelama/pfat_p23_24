@@ -33,7 +33,7 @@ public class Prog2 implements Prog {
     }
 
     public void generateCode(BufferedWriter w, String indent) throws IOException {
-        w.write(indent+"public static void execute() throws EmptySetException {");
+        w.write(indent+"public static void main(String args[]) {");
         w.newLine();
         body.generateCode(w, indent+"    "); // indentacion mas profunda (4 espacios mas)
         w.newLine();
