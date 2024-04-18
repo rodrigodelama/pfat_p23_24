@@ -1,0 +1,25 @@
+PS C:\dev\pfat_p23_24\p3\class> java -cp ".;java-cup-11b-runtime.jar" Main ../ejemplos/Ejem4/ejem4.prg
+Analisis lexico y sintactico correctos
+Analisis Semantico correcto
+Codigo generado en fichero ejem4.java
+PS C:\dev\pfat_p23_24\p3\class> javac ejem4.java
+PS C:\dev\pfat_p23_24\p3\class> java ejem4
+El valor de la variable a1 es: 6
+El valor de la variable b1 es: 5
+El valor de la variable c1 es: 10
+El valor de la variable d1 es: 1
+El valor de la variable i es: 0
+El valor de la variable elem es: 0
+El valor de la variable i es: 1
+El valor de la variable elem es: 2
+El valor de la variable i es: 2
+El valor de la variable elem es: 4
+El valor de la variable i es: 3
+El valor de la variable elem es: 6
+El valor de la variable i es: 4
+El valor de la variable elem es: 8
+
+
+ERROR
+
+no sigue despues de la linea 22 ????

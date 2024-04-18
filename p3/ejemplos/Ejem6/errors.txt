@@ -1,0 +1,26 @@
+PS C:\dev\pfat_p23_24\p3\class> java -cp ".;java-cup-11b-runtime.jar" Main ../ejemplos/Ejem6/ejem6.prg
+Analisis lexico y sintactico correctos
+Analisis Semantico correcto
+Codigo generado en fichero ejem6.java
+PS C:\dev\pfat_p23_24\p3\class> javac ejem6.java
+PS C:\dev\pfat_p23_24\p3\class> java ejem6
+El valor de la variable a1 es: 8
+El valor de la variable b1 es: 6
+El valor de la variable c1 es: 11
+El valor de la variable d1 es: 3
+El valor de la variable e1 es: 5
+El valor de la variable i es: 0
+El valor de la variable sig es: 1
+El valor de la variable i es: 1
+El valor de la variable sig es: 3
+El valor de la variable i es: 2
+El valor de la variable sig es: 5
+El valor de la variable i es: 3
+El valor de la variable sig es: 7
+El valor de la variable i es: 4
+El valor de la variable sig es: 9
+Exception in thread "main" Error while computing a set expression: the set is empty
+
+        at GeneratedCodeLib.IntSetA.lowestElem(IntSetA.java:80)
+        at GeneratedCodeLib.IntSet.lowestElem(IntSet.java:87)
+        at ejem6.main(ejem6.java:40)

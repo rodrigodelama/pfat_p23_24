@@ -1,0 +1,10 @@
+PS C:\dev\pfat_p23_24\p3\class> java -cp ".;java-cup-11b-runtime.jar" Main ../ejemplos/Ejem7/ejem7.prg
+Analisis lexico y sintactico correctos
+Analisis Semantico correcto
+Codigo generado en fichero ejem7.java
+PS C:\dev\pfat_p23_24\p3\class> javac ejem7.java
+PS C:\dev\pfat_p23_24\p3\class> java ejem7
+Exception in thread "main" java.lang.IllegalArgumentException: duplicate element: 4
+        at java.base/java.util.ImmutableCollections$SetN.<init>(ImmutableCollections.java:925)
+        at java.base/java.util.Set.of(Set.java:588)
+        at ejem7.main(ejem7.java:22)

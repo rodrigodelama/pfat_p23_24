@@ -1,0 +1,15 @@
+PS C:\dev\pfat_p23_24\p3\class> java -cp ".;java-cup-11b-runtime.jar" Main ../ejemplos/Ejem5/ejem5.prg
+Analisis lexico y sintactico correctos
+Analisis Semantico correcto
+Codigo generado en fichero ejem5.java
+PS C:\dev\pfat_p23_24\p3\class> javac ejem5.java
+PS C:\dev\pfat_p23_24\p3\class> java ejem5
+El valor de la variable a1 es: 6
+El valor de la variable b1 es: 5
+El valor de la variable c1 es: 10
+El valor de la variable d1 es: 1
+
+
+ERROR
+
+no sigue despues de la linea 4 ????
