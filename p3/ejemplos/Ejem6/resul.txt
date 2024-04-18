@@ -1,0 +1,15 @@
+El valor de la variable a1 es: 8
+El valor de la variable b1 es: 6
+El valor de la variable c1 es: 11
+El valor de la variable d1 es: 3
+El valor de la variable e1 es: 5
+El valor de la variable i es: 0
+El valor de la variable sig es: 1
+El valor de la variable i es: 1
+El valor de la variable sig es: 3
+El valor de la variable i es: 2
+El valor de la variable sig es: 5
+El valor de la variable i es: 3
+El valor de la variable sig es: 7
+El valor de la variable i es: 4
+El valor de la variable sig es: 9
