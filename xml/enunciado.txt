@@ -1,0 +1,13 @@
+Cada pareja debe definir un tipo de documento XML que permita representar un conjunto de películas que cumpla los requisitos que se enumeran a continuación:
+
+Como mínimo debe permitir representar los siguientes datos de una película, aunque se permite representar cualquier
+otro tipo de datos adicional que el alumno considere conveniente:
+    Título.
+    Director.
+    Año.
+    Duración.
+    Actores protagonistas (añadiendo, opcionalmente, el nombre del personaje o personajes cuyo papel desempeñen).
+    Uno o más géneros a los que pertenezca.
+    Nacionalidad o nacionalidades.
+Debe contar con un DTD que especifique los elementos permitidos, su tipo de contenido, atributos, etc.Dado el fin
+didáctico de la práctica, el DTD debe incorporar tipos de contenidos de elementos y de atributos variados

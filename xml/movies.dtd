@@ -1,0 +1,20 @@
+<!ELEMENT movies (movie+)>
+
+<!ELEMENT movie (title, director, year, duration, actors, genres, nationalities)>
+<!ATTLIST movie
+          index CDATA #IMPLIED>
+
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT director (#PCDATA)>
+<!ELEMENT year (#PCDATA)>
+<!ELEMENT duration (#PCDATA)>
+
+<!ELEMENT actors (actor+)>
+<!ELEMENT actor (#PCDATA)>
+<!ATTLIST actor character CDATA #REQUIRED>
+
+<!ELEMENT genres (genre+)>
+<!ELEMENT genre (#PCDATA)>
+
+<!ELEMENT nationalities (nationality+)>
+<!ELEMENT nationality (#PCDATA)>
