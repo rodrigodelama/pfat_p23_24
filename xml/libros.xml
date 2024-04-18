@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE books SYSTEM "file:./libros.dtd">
+
+<books>
+    <book index="1">
+        <title><![CDATA[Don Quixote]]></title>
+        <authors>
+            <author name="Miguel de Cervantes" nationality="Spanish"></author>
+        </authors>
+        <year>1605</year>
+        <pages>3218 </pages>
+        <genres>
+            <genre><![CDATA[Novel]]></genre>
+            <genre><![CDATA[Satire]]></genre>
+            <genre><![CDATA[Psychological Fiction]]></genre>
+        </genres>
+    </book>
+</books>

@@ -1,0 +1,18 @@
+<!ELEMENT books (book+)>
+
+<!ELEMENT book (title, authors, year, pages, genres)>
+<!ATTLIST book
+          index CDATA #IMPLIED>
+
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT year (#PCDATA)>
+<!ELEMENT pages (#PCDATA)>
+
+<!ELEMENT authors (author+)>
+<!ELEMENT author (#PCDATA)>
+<!ATTLIST author 
+    name CDATA #REQUIRED
+    nationality CDATA #IMPLIED>
+
+<!ELEMENT genres (genre+)>
+<!ELEMENT genre (#PCDATA)>
