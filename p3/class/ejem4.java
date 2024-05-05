@@ -10,7 +10,7 @@
 
 import GeneratedCodeLib.*;
 import Errors.*;
-import java.util.Set;
+import java.util.Arrays;
 import java.util.Vector;
 
 public class ejem4 {
@@ -19,8 +19,8 @@ public class ejem4 {
         int a1, b1, c1, d1;
         int numElem, elem, i;
 
-        a = new IntSet(new Vector<>(Set.of(0, 1, 3, 5, 7, 9)));
-        b = new IntSet(new Vector<>(Set.of(0, 2, 4, 6, 8)));
+        a = new IntSet(new Vector<>(Arrays.asList(0, 1, 3, 5, 7, 9)));
+        b = new IntSet(new Vector<>(Arrays.asList(0, 2, 4, 6, 8)));
         c = (IntSet) a.unionSet(b);
         d = (IntSet) a.intersectionSet(b);
         a1 = a.card();
@@ -35,10 +35,10 @@ public class ejem4 {
         e = new IntSet(new Vector<>());
         
         while (((i < 100))) {
-            e = (IntSet) e.unionSet(new IntSet(new Vector<>(Set.of(((2 * i) + 1)))));
+            e = (IntSet) e.unionSet(new IntSet(new Vector<>(Arrays.asList(((2 * i) + 1)))));
             
             if ((((i > 80)) || (((((i / 4)) * 4) == i)))) {
-                e = (IntSet) e.unionSet(new IntSet(new Vector<>(Set.of(i))));
+                e = (IntSet) e.unionSet(new IntSet(new Vector<>(Arrays.asList(i))));
             }
             i = (i + 1);
         }
@@ -50,7 +50,7 @@ public class ejem4 {
             System.out.println("El valor de la variable i es: " + i);
             System.out.println("El valor de la variable elem es: " + elem);
             i = (i + 1);
-            e = (IntSet) e.setDif(new IntSet(new Vector<>(Set.of(elem))));
+            e = (IntSet) e.setDif(new IntSet(new Vector<>(Arrays.asList(elem))));
         }
     }
 }

@@ -73,7 +73,7 @@ public class Main {
                 w.newLine();
                 w.write("import GeneratedCodeLib.*;\n");
                 w.write("import Errors.*;\n");
-                w.write("import java.util.Set;\n");
+                w.write("import java.util.Arrays;\n");
                 w.write("import java.util.Vector;\n");
                 w.newLine();
                 w.write("public class " + fileName + " {\n");

@@ -10,8 +10,7 @@
 
 import GeneratedCodeLib.*;
 import Errors.*;
-import java.util.Set;
-import java.util.Vector;
+import java.util.*;
 
 public class ejem6 {
     public static void main(String args[]) {
@@ -19,8 +18,8 @@ public class ejem6 {
         int a1, b1, c1, d1, e1;
         int i, sig;
 
-        a = new IntSet(new Vector<>(Set.of(0, 1, 3, 5, ( -2), 7, 9, 4)));
-        b = new IntSet(new Vector<>(Set.of(0, ( -2), 4, ( -6), 8, 10)));
+        a = new IntSet(new Vector<>(Arrays.asList(0, 1, 3, 5, ( -2), 7, 9, 4)));
+        b = new IntSet(new Vector<>(Arrays.asList(0, ( -2), 4, ( -6), 8, 10)));
         c = (IntSet) a.unionSet(b);
         d = (IntSet) a.intersectionSet(b);
         e = (IntSet) a.setDif(b);
@@ -41,7 +40,7 @@ public class ejem6 {
             System.out.println("El valor de la variable i es: " + i);
             System.out.println("El valor de la variable sig es: " + sig);
             i = (i + 1);
-            e = (IntSet) e.setDif(new IntSet(new Vector<>(Set.of(sig))));
+            e = (IntSet) e.setDif(new IntSet(new Vector<>(Arrays.asList(sig))));
         }
     }
 }

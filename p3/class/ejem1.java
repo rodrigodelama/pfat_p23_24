@@ -10,7 +10,7 @@
 
 import GeneratedCodeLib.*;
 import Errors.*;
-import java.util.Set;
+import java.util.Arrays;
 import java.util.Vector;
 
 public class ejem1 {
@@ -18,8 +18,8 @@ public class ejem1 {
         IntSet a, b, c, d;
         int a1, b1, c1, d1;
 
-        a = new IntSet(new Vector<>(Set.of(0, 1, 3, 5, 7, 9)));
-        b = new IntSet(new Vector<>(Set.of(0, 2, 4, 6, 8)));
+        a = new IntSet(new Vector<>(Arrays.asList(0, 1, 3, 5, 7, 9)));
+        b = new IntSet(new Vector<>(Arrays.asList(0, 2, 4, 6, 8)));
         c = (IntSet) a.unionSet(b);
         d = (IntSet) a.intersectionSet(b);
         a1 = a.card();

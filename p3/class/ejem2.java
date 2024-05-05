@@ -10,7 +10,7 @@
 
 import GeneratedCodeLib.*;
 import Errors.*;
-import java.util.Set;
+import java.util.Arrays;
 import java.util.Vector;
 
 public class ejem2 {
@@ -19,8 +19,8 @@ public class ejem2 {
         int a1, b1, c1, d1;
         int numElem, elem, i;
 
-        a = new IntSet(new Vector<>(Set.of(0, 1, 3, 5, 7, 9)));
-        b = new IntSet(new Vector<>(Set.of(0, 2, 4, 6, 8)));
+        a = new IntSet(new Vector<>(Arrays.asList(0, 1, 3, 5, 7, 9)));
+        b = new IntSet(new Vector<>(Arrays.asList(0, 2, 4, 6, 8)));
         c = (IntSet) a.unionSet(b);
         d = (IntSet) a.intersectionSet(b);
         a1 = a.card();
@@ -40,7 +40,7 @@ public class ejem2 {
             System.out.println("El valor de la variable elem es: " + elem);
             i = (i + 1);
             numElem = (numElem - 1);
-            c = (IntSet) c.setDif(new IntSet(new Vector<>(Set.of(elem))));
+            c = (IntSet) c.setDif(new IntSet(new Vector<>(Arrays.asList(elem))));
             
             if (( !((numElem == c.card())))) {
                 i = ( -1);
