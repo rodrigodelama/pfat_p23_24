@@ -13,7 +13,7 @@ import Errors.*;
 import java.util.Set;
 import java.util.Vector;
 
-class ejem6 {
+public class ejem6 {
     public static void main(String args[]) throws EmptySetException {
         IntSet a, b, c, d, e;
         int a1, b1, c1, d1, e1;

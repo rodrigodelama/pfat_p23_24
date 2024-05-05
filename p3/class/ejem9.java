@@ -5,7 +5,7 @@
  * Rodrigo De Lama Fernández - 100451775
  * Isabel Schweim - 100460211
  *
- * ejem8.java
+ * ejem9.java
  */
 
 import GeneratedCodeLib.*;
@@ -13,13 +13,13 @@ import Errors.*;
 import java.util.Set;
 import java.util.Vector;
 
-public class ejem8 {
+public class ejem9 {
     public static void main(String args[]) throws EmptySetException {
-        int a, b;
+        boolean a, b, c;
 
-        a = ( -2);
-        b = 5;
-        b = (a * b);
+        a = true;
+        b = false;
+        c = true;
         System.out.println("El valor de la variable b es: " + b);
     }
 }

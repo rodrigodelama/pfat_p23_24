@@ -13,7 +13,7 @@ import Errors.*;
 import java.util.Set;
 import java.util.Vector;
 
-class ejem4 {
+public class ejem4 {
     public static void main(String args[]) throws EmptySetException {
         IntSet a, b, c, d, e;
         int a1, b1, c1, d1;
@@ -34,7 +34,7 @@ class ejem4 {
         i = 0;
         e = new IntSet(new Vector<>());
         
-        while (((i > 100))) {
+        while (((i < 100))) {
             e = (IntSet) e.unionSet(new IntSet(new Vector<>(Set.of(((2 * i) + 1)))));
             
             if ((((i > 80)) || (((((i / 4)) * 4) == i)))) {

@@ -11,6 +11,9 @@
 package GeneratedCodeLib;
 
 import java.util.Vector;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.Collections;
 import Errors.*;
 
 public class IntSet extends IntSetA {
@@ -40,15 +43,11 @@ public class IntSet extends IntSetA {
     // Union of two sets
     @Override
     public IntSetA unionSet(IntSetA is) {
-        Vector<Integer> thisSet = this.getIntSetData();
-        Vector<Integer> otherSet = is.getIntSetData();
+        Set<Integer> uniqueElements = new HashSet<>(this.getIntSetData());
+        uniqueElements.addAll(is.getIntSetData());
 
-        Vector<Integer> result = new Vector<>(thisSet);
-        for (Integer elem : otherSet) {
-            if (!result.contains(elem)) {
-                result.add(elem);
-            }
-        }
+        Vector<Integer> result = new Vector<>(uniqueElements);
+        Collections.sort(result);
 
         return new IntSet(result);
     }
@@ -65,12 +64,16 @@ public class IntSet extends IntSetA {
         Vector<Integer> thisSet = this.getIntSetData();
         Vector<Integer> otherSet = is.getIntSetData();
 
-        Vector<Integer> result = new Vector<>();
+        Set<Integer> resultSet = new HashSet<>();
+
         for (Integer elem : thisSet) {
             if (otherSet.contains(elem)) {
-                result.add(elem);
+                resultSet.add(elem);
             }
         }
+
+        Vector<Integer> result = new Vector<>(resultSet);
+        Collections.sort(result);
 
         return new IntSet(result);
     }
@@ -93,10 +96,11 @@ public class IntSet extends IntSetA {
         Vector<Integer> thisSet = this.getIntSetData();
         Vector<Integer> otherSet = is.getIntSetData();
 
+        thisSet.removeAll(otherSet);
+
         Vector<Integer> result = new Vector<>(thisSet);
-        result.removeAll(otherSet);
+        Collections.sort(result);
 
         return new IntSet(result);
     }
 }
-
