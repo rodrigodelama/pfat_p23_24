@@ -18,8 +18,10 @@ java -cp ".;java-cup-11b-runtime.jar" Main ../ejemplos/Ejem7/ejem7.prg
 javac ejem7.java
 java -cp ".;java-cup-11b-runtime.jar" Main ../ejemplos/Ejem8/ejem8.prg
 javac ejem8.java
-java -cp ".;java-cup-11b-runtime.jar" Main ../ejemplos/Ejem9/ejem9.prg
-javac ejem9.java
+
+# ejem9 was made by me :)
+# java -cp ".;java-cup-11b-runtime.jar" Main ../ejemplos/Ejem9/ejem9.prg
+# javac ejem9.java
 
 # To test the generated files
 java ejem1
@@ -30,7 +32,6 @@ java ejem5
 java ejem6
 java ejem7
 java ejem8
-java ejem9
 
 # To clean up the generated files
 rm ejem*
