@@ -36,7 +36,7 @@ public class ejem6 {
         System.out.println("El valor de la variable e1 es: " + e1);
         i = 0;
         
-        while (( !((e == new IntSet(new Vector<>()))))) {
+        while (( !((e.equals(new IntSet(new Vector<>())))))) {
             sig = e.lowestElem();
             System.out.println("El valor de la variable i es: " + i);
             System.out.println("El valor de la variable sig es: " + sig);
