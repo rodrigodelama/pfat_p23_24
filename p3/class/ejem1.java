@@ -21,7 +21,7 @@ public class ejem1 {
         a = new IntSet(new Vector<>(Arrays.asList(0, 1, 3, 5, 7, 9)));
         b = new IntSet(new Vector<>(Arrays.asList(0, 2, 4, 6, 8)));
         c = (IntSet) a.unionSet(b);
-        d = (IntSet) a.intersectionSet(b);
+        d = (IntSet) a.intersectionSet(new IntSet(new Vector<>(Arrays.asList(0))));
         a1 = a.card();
         System.out.println("El valor de la variable a1 es: " + a1);
         b1 = b.card();

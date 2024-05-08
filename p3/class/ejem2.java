@@ -17,12 +17,11 @@ public class ejem2 {
     public static void main(String args[]) throws EmptySetException {
         IntSet a, b, c, d;
         int a1, b1, c1, d1;
-        int numElem, elem, i;
 
         a = new IntSet(new Vector<>(Arrays.asList(0, 1, 3, 5, 7, 9)));
         b = new IntSet(new Vector<>(Arrays.asList(0, 2, 4, 6, 8)));
         c = (IntSet) a.unionSet(b);
-        d = (IntSet) a.intersectionSet(b);
+        d = (IntSet) a.intersectionSet(new IntSet(new Vector<>(Arrays.asList((1 + a.card())))));
         a1 = a.card();
         System.out.println("El valor de la variable a1 es: " + a1);
         b1 = b.card();
@@ -31,20 +30,5 @@ public class ejem2 {
         System.out.println("El valor de la variable c1 es: " + c1);
         d1 = d.card();
         System.out.println("El valor de la variable d1 es: " + d1);
-        numElem = c.card();
-        i = 0;
-        
-        while (((c.card() > 0) && (i > ( -1)))) {
-            elem = c.lowestElem();
-            System.out.println("El valor de la variable i es: " + i);
-            System.out.println("El valor de la variable elem es: " + elem);
-            i = (i + 1);
-            numElem = (numElem - 1);
-            c = (IntSet) c.setDif(new IntSet(new Vector<>(Arrays.asList(elem))));
-            
-            if (( !((numElem == c.card())))) {
-                i = ( -1);
-            }
-        }
     }
 }

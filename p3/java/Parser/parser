@@ -16,7 +16,9 @@ parser code {:
 // Terminales
 terminal COMA, PC, PAREN, TESIS, BEGIN, END, ASIG, AND, OR, NOT, IF, THEN, PROG,
           DECL, WHILE, DO, PRINT_I, PRINT_B, BRAC, KET, IN, UNION, INTERSEC, CARD,
-          LOWEST_ELEM, MAS, MENOS, MUL, DIV, MAYOR, MENOR, IGUAL, EMPTYSET, OPUESTO;
+          LOWEST_ELEM, MAS, MENOS, MUL, DIV, MAYOR, MENOR, IGUAL, EMPTYSET, OPUESTO,
+          CERO, INT2SET, ELSE;
+
 
 terminal Integer CINT, TYPE;
 terminal String IDENT;
@@ -69,7 +71,7 @@ StatementList ::= Statement:s PC {:RESULT=new StatementList1(s); :}
 Statement ::= IDENT:i ASIG Exp:e {:RESULT=new Statement1(i, e); :}
             | PRINT_I PAREN IDENT:i TESIS {:RESULT=new Statement2(i); :}
             | PRINT_B PAREN IDENT:i TESIS {:RESULT=new Statement3(i); :}
-            | IF Exp:e THEN StatementList:sl END {:RESULT=new Statement4(e, sl); :}
+            | IF Exp:e THEN StatementList:sl ELSE StatementList:sl1 END {:RESULT=new Statement4(e, sl, sl1); :}
             | WHILE Exp:e DO StatementList:sl END {:RESULT=new Statement5(e, sl); :} ;
 
 //Lista de expresiones
@@ -94,11 +96,14 @@ Exp ::= IDENT:s {:RESULT=new Variable(s); :} //Un identificador que sea el nombr
       //Expresiones de tipo intset (conjunto de enteros)
       | BRAC KET {:RESULT=new ConjuntoVacio(); :} //Un conjunto vacío, utilizando los símbolos "{" y "}" para delimitar la lista de elementos.
       | EMPTYSET {:RESULT=new ConjuntoVacio(); :} //Un conjunto vacío, utilizando el símbolo emptyset.
+      | CERO {:RESULT=new Cero(); :} //step 1
+
             /*
               Una expresion que comienza por {, termina por } y contiene una lista de subexpresiones de tipo int,
               separadas por comas. Representa un conjunto de enteros cuyos elementos son los enteros resultado de
               evaluar las subexpresiones.
             */
+      | INT2SET PAREN Exp:e TESIS {:RESULT=new Int2Set(e); :} // step 2
       | BRAC ExpList:el KET {:RESULT=new Conjunto(el); :} //Un conjunto de enteros, utilizando los símbolos "{" y "}" para delimitar la lista de elementos.
           //TODO: Repasar ExpList, tiene sentido?
       | Exp:e1 UNION Exp:e2 {:RESULT=new Union(e1, e2); :} //La union de dos conjuntos de enteros, utilizando el operador union.

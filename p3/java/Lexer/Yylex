@@ -43,12 +43,15 @@ card    {return tok(sym.CARD, null); }
 lowest_elem    {return tok(sym.LOWEST_ELEM, null); }
 emptyset    {return tok(sym.EMPTYSET, null); }
 if    {return tok(sym.IF, null); }
+else  {return tok(sym.ELSE, null); }
 then    {return tok(sym.THEN, null); }
 end    {return tok(sym.END, null); }
 
 int    {return tok(sym.TYPE, 1); }
 bool    {return tok(sym.TYPE, 2); }
 intset    {return tok(sym.TYPE, 3); }
+cero     {return tok(sym.CERO, null); }
+int2Set      {return tok(sym.INT2SET, null); }
 
 ";"		{return tok(sym.PC, null); }
 ":="		{return tok(sym.ASIG, null); }

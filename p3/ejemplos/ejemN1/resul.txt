@@ -1,0 +1,4 @@
+El valor de la variable a1 es: 6
+El valor de la variable b1 es: 5
+El valor de la variable c1 es: 10
+El valor de la variable d1 es: 1

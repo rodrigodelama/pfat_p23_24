@@ -18,7 +18,6 @@ public class ejem3 {
         IntSet a, b, c, d;
         int a1, b1, c1, d1;
         int numElem, elem, i;
-        boolean control1;
 
         a = new IntSet(new Vector<>(Arrays.asList(0, 1, 3, 5, 7, 9)));
         b = new IntSet(new Vector<>(Arrays.asList(0, 2, 4, 6, 8)));
@@ -34,22 +33,19 @@ public class ejem3 {
         System.out.println("El valor de la variable d1 es: " + d1);
         numElem = c.card();
         i = 0;
-        control1 = true;
         
-        while (((c.card() > 0) && control1)) {
+        while (((c.card() > 0) && (i > ( -1)))) {
             elem = c.lowestElem();
             System.out.println("El valor de la variable i es: " + i);
             System.out.println("El valor de la variable elem es: " + elem);
-            System.out.println("El valor de la variable control1 es: " + control1);
-            i = (i + 1);
             numElem = (numElem - 1);
             c = (IntSet) c.setDif(new IntSet(new Vector<>(Arrays.asList(elem))));
             
             if (( !((numElem == c.card())))) {
-                control1 = false;
+                i = ( -1);
+            }             else {
+                i = (i + 1);
             }
         }
-        control1 = false;
-        System.out.println("El valor de la variable control1 es: " + control1);
     }
 }
